@@ -1,0 +1,6 @@
+googletagmanager.com
+www.googletagmanager.com
+www.googleadservices.com
+google-analytics.com
+ssl.google-analytics.com
+www.google-analytics.com
