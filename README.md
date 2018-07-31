@@ -22,7 +22,9 @@ Security headers are HTTP headers. [HTTP header](https://www.w3.org/Protocols/rf
 
 
 ## Content Security Policy
-A Content Security Policy (CSP) consists of a set of directives that restrict how a webpage loads resources, such as scripts and media files. The CSP protects a web page from various attacks, such as cross-site scripting (XSS) and clickjacking. A CSP supports many directives that limit how the resources are loaded.
+A Content Security Policy (CSP) consists of a set of directives that restrict how a webpage loads resources, such as scripts and media files. The CSP protects a web page from various attacks, such as cross-site scripting (XSS) and clickjacking.
+
+A CSP supports many directives that limit how the resources are loaded.
 
 The tool validates the following best practices:
 - **Avoid using an empty CSP**: Using the Content Security Policy header with an empty value is equivalent to know content security policy.
