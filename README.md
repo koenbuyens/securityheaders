@@ -25,7 +25,6 @@ Security headers are HTTP headers. [HTTP header](https://www.w3.org/Protocols/rf
 A Content Security Policy (CSP) consists of a set of directives that restrict how a webpage loads resources, such as scripts and media files. The CSP protects a web page from various attacks, such as cross-site scripting (XSS) and clickjacking. A CSP supports many directives that limit how the resources are loaded.
 
 The tool validates the following best practices:
-- **Configure a CSP**: not configuring a Content Security Policy may not be beneficial for some websites. 
 - **Avoid using an empty CSP**: Using the Content Security Policy header with an empty value is equivalent to know content security policy.
 - **Specify default-src**: default-src should be set as a fall-back for when other directives are not specified. 
 - **Specify object-src, script-src, and base-uri**: explicitly specify these directives, as without a restrictive default-src directive, execution of JavaScript is still possible.
@@ -55,7 +54,6 @@ The X-Frame-Options HTTP header mitigates clickjacking attacks by limiting what 
 - "ALLOW-FROM": only allow a specific origin in which this page be framed.
 
 The tool validates the following:
-- **Configure a X-Frame-Options header**: has the header been used.
 - **Avoid using allow-from** as it allows rendering from other domains. Note that this might be ok and thus need to be manually verified.
 
 ## XContentTypeOptions
@@ -85,7 +83,6 @@ The tool validates the following:
 The Referer HTTP header is set by browsers to tell the server the page that brought it there. The Referer-Policy header specifies whether the browser is allowed to send the Referer header. 
 
 The tool validates the following:
-- **Configure a Referrer-Policy header**: has the header been used.
 - **Avoid using unsafe-url and origin-when-cross-origin** as they allow transfer of sensitive information (via the Referer header) from HTTPS environments to HTTP environments.
 
 ## FeaturePolicy
