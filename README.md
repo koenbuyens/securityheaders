@@ -4,7 +4,7 @@ The script in this repository validates whether the headers pertaining to securi
 In summary, the script implements the checks identified by 
 - http://securityheaders.io/
 - https://csp.withgoogle.com
-- my original research
+- original research
 
 Start the script as follows.
 ``` bash
