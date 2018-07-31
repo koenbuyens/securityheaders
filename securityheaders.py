@@ -1026,6 +1026,7 @@ class CSPMissingChecker(HeaderMissingChecker):
 class StrictTransportSecurityMissingChecker(HeaderMissingChecker):
     def check(self, headers, opt_options=dict()):
         return HeaderMissingChecker.check(self, headers, HeaderType.StrictTransportSecurity, 'This header strengthens your implementation of TLS by getting the User Agent to enforce the use of HTTPS. The recommended value us "strict-transport-security: max-age=31536000; includeSubDomains".', opt_options)         
+#TODO: check max-age
 
 class XFrameOptionsMissingChecker(HeaderMissingChecker):
     def check(self, headers, opt_options=dict()):
@@ -1199,6 +1200,8 @@ class SecurityHeaders(object):
 if __name__ == "__main__":
     #TODO: implement configrable ratings
     #TODO: implement configerable checkers (i.e. what to be used)
+    #TODO: CORS - null origin
+    #TODO: CORS - Only Allow HTTPS Origins for Requests with Credentials
     parser = argparse.ArgumentParser(description='Check HTTP security headers', \
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('url', metavar='URL', type=str, help='Target URL')
