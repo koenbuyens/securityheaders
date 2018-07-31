@@ -48,7 +48,7 @@ The HTTP Strict Transport Security (HSTS) header ensures that all communication 
 The tool validates whether the HSTS header has been specified.
 
 ## XFrameOptions
-The X-Frame-Options HTTP header mitigates clickjacking attacks by limiting what can be rendered in a frame. The header can specify one of the following options:
+The XFrame-Options HTTP header mitigates clickjacking attacks by limiting what can be rendered in a frame. The header can specify one of the following options:
 - "DENY": do not render the page if it is in an iframe. 
 - "SAMEORIGIN": do not render the page if it is in an iframe on any page hosted outside the framed page's domain. 
 - "ALLOW-FROM": only allow a specific origin in which this page be framed.
@@ -57,14 +57,14 @@ The tool validates the following:
 - **Avoid using allow-from** as it allows rendering from other domains. Note that this might be ok and thus need to be manually verified.
 
 ## XContentTypeOptions
-The X-Content-Type-Options header stops a browser from trying to MIME-sniff the content type and forces it to stick with the declared content-type. 
+The XContent-Type-Options header stops a browser from trying to MIME-sniff the content type and forces it to stick with the declared content-type. 
 
 The tool validates the following:
 - **Configure a X-Content-Type-Options header**: has the header been used.
 - **Avoid setting the header to anything other than nosniff**: prevents sniffing of the header.
 
 ## XSSSProtection
-The X-XSS-Protection header sets the configuration for the cross-site scripting filter built into most browsers. 
+The XXSS-Protection header sets the configuration for the cross-site scripting filter built into most browsers. 
 
 The tool validates the following:
 - **If the header has been used, does it enable the filter**: the recommended value is "X-XSS-Protection: 1; mode=block
