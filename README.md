@@ -117,9 +117,15 @@ python securityheaders.py https://scotthelme.co.uk --checkers CSPChecker --skipc
 
 By default the script shows the output in a tabular format. To create output in a different format, use the `--formatter` flag. In the example below, the script outputs the findings as CSV. Note that formatters base64-encode the fields that may contain control characters for that format. For instance, for CSV the description is base 64 encoded as it may contain commas.
 ``` bash
-python securityheaders.py https://scotthelme.co.uk --formatter CSV
+python securityheaders.py https://scotthelme.co.uk --formatter csv
 ```
 ![Output to CSV.](./pics/formatterCSV.png)
+
+
+``` bash
+python securityheaders.py --listformatters
+```
+![List of supported output formats.](./pics/listformatters.png)
 
 To write output to a file rather displaying it on the screen, use the --file flag.
 ``` bash
