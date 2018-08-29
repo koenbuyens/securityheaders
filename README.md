@@ -8,54 +8,57 @@ It implements checks identified by
 
 
 # Table of Contents
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [TL; DR](#tl-dr)
-- [Table of Contents](#table-of-contents)
 - [Introduction](#introduction)
 - [Installation and Execution](#installation-and-execution)
-	- [Using Docker](#using-docker)
-	- [Using Burp](#using-burp)
+  * [Using Docker](#using-docker)
+  * [Using Burp](#using-burp)
 - [Security Headers](#security-headers)
-	- [Content Security Policy](#content-security-policy)
-		- [Specify default-src](#specify-default-src)
-		- [Specify object-src, script-src, and base-uri](#specify-object-src-script-src-and-base-uri)
-		- [Avoid using unsafe-inline](#avoid-using-unsafe-inline)
-		- [Avoid using unsafe-eval](#avoid-using-unsafe-eval)
-		- [Avoid using the wild-card](#avoid-using-the-wild-card)
-		- [Avoid specifying an IP source](#avoid-specifying-an-ip-source)
-		- [Avoid using deprecated directives](#avoid-using-deprecated-directives)
-		- [Avoid using sources that start with http:](#avoid-using-sources-that-start-with-http)
-		- [Avoid using sources that are untrusted](#avoid-using-sources-that-are-untrusted)
-	- [HTTP Strict Transport Security](#http-strict-transport-security)
-		- [Include the includeSubdomains directive](#include-the-includesubdomains-directive)
-		- [Avoid setting the `max-age` directive to 0](#avoid-setting-the-max-age-directive-to-0)
-	- [X-Frame-Options](#x-frame-options)
-		- [Avoid using allow-from](#avoid-using-allow-from)
-		- [X-Frame-Options Syntax Errors](#x-frame-options-syntax-errors)
-	- [X-Content-Type-Options](#x-content-type-options)
-		- [Avoid setting the header to anything other than nosniff](#avoid-setting-the-header-to-anything-other-than-nosniff)
-		- [X-Content-Type-Options Syntax Errors](#x-content-type-options-syntax-errors)
-	- [X-XSS-Protection](#x-xss-protection)
-		- [Avoid disabling the filter](#avoid-disabling-the-filter)
-		- [Avoid using a HTTP report URI](#avoid-using-a-http-report-uri)
-		- [Use block](#use-block)
-	- [Cross-Origin Resource Sharing](#cross-origin-resource-sharing)
-		- [Avoid allowing access from all origins](#avoid-allowing-access-from-all-origins)
-		- [Avoid using the null header](#avoid-using-the-null-header)
-		- [Only allow HTTPS origins for requests with credentials](#only-allow-https-origins-for-requests-with-credentials)
-		- [Avoid setting the preflight time for longer than 30 minutes](#avoid-setting-the-preflight-time-for-longer-than-30-minutes)
-	- [Referrer-Policy](#referrer-policy)
-		- [Avoid using unsafe-url and origin-when-cross-origin](#avoid-using-unsafe-url-and-origin-when-cross-origin)
-	- [Feature-Policy](#feature-policy)
-		- [Avoid using the wild-card character](#avoid-using-the-wild-card-character)
-	- [Other](#other)
-	- [Syntax Errors](#syntax-errors)
+  * [Content Security Policy](#content-security-policy)
+    + [Specify default-src](#specify-default-src)
+    + [Specify object-src, script-src, and base-uri](#specify-object-src-script-src-and-base-uri)
+    + [Avoid using unsafe-inline](#avoid-using-unsafe-inline)
+    + [Avoid using unsafe-eval](#avoid-using-unsafe-eval)
+    + [Avoid using the wild-card](#avoid-using-the-wild-card)
+    + [Avoid specifying an IP source](#avoid-specifying-an-ip-source)
+    + [Avoid using deprecated directives](#avoid-using-deprecated-directives)
+    + [Avoid using sources that start with http:](#avoid-using-sources-that-start-with-http)
+    + [Avoid using sources that are untrusted](#avoid-using-sources-that-are-untrusted)
+  * [HTTP Strict Transport Security](#http-strict-transport-security)
+    + [Include the includeSubdomains directive](#include-the-includesubdomains-directive)
+    + [Avoid setting the `max-age` directive to 0](#avoid-setting-the-max-age-directive-to-0)
+  * [X-Frame-Options](#x-frame-options)
+    + [Avoid using allow-from](#avoid-using-allow-from)
+  * [X-Content-Type-Options](#x-content-type-options)
+    + [Avoid setting the header to anything other than nosniff](#avoid-setting-the-header-to-anything-other-than-nosniff)
+  * [X-XSS-Protection](#x-xss-protection)
+    + [Avoid disabling the filter](#avoid-disabling-the-filter)
+    + [Avoid using a HTTP report URI](#avoid-using-a-http-report-uri)
+    + [Use block](#use-block)
+  * [Cross-Origin Resource Sharing](#cross-origin-resource-sharing)
+    + [Avoid allowing access from all origins](#avoid-allowing-access-from-all-origins)
+    + [Avoid using the null header with credentialed requests](#avoid-using-the-null-header-with-credentialed-requests)
+    + [Only allow HTTPS origins for requests with credentials](#only-allow-https-origins-for-requests-with-credentials)
+    + [Avoid setting the preflight time for longer than 30 minutes](#avoid-setting-the-preflight-time-for-longer-than-30-minutes)
+    + [Avoid exposing sensitive headers](#avoid-exposing-sensitive-headers)
+  * [Referrer-Policy](#referrer-policy)
+    + [Avoid using unsafe-url and origin-when-cross-origin](#avoid-using-unsafe-url-and-origin-when-cross-origin)
+  * [Feature-Policy](#feature-policy)
+    + [Avoid using the wild-card character](#avoid-using-the-wild-card-character)
+  * [Other](#other)
+  * [Syntax Errors](#syntax-errors)
 - [References](#references)
-	- [Content-Security-Policy](#content-security-policy)
-	- [Feature-Policy](#feature-policy)
-
-
+  * [Clear-Site-Data](#clear-site-data)
+  * [Content-Security-Policy](#content-security-policy)
+  * [CORS](#cors)
+  * [Feature-Policy](#feature-policy-1)
+  * [HPKP](#hpkp)
+  * [HTTP-Strict-Transport-Security (HSTS)](#http-strict-transport-security-hsts)
+  * [Referrer-Policy](#referrer-policy-1)
+  * [X-Frame-Options (XFO)](#x-frame-options-xfo)
+  * [X-Content-Type-Options](#x-content-type-options-1)
+  * [X-Download-Options](#x-download-options)
+  * [X-Permitted-Cross-Domain-Policies](#x-permitted-cross-domain-policies)
+  * [X-XSS-Protection](#x-xss-protection-1)
 
 # Introduction
 Applications can set secure HTTP response headers as an additional layer of defense that prevents browsers from running into easy preventable vulnerabilities.
@@ -111,7 +114,7 @@ python securityheaders.py --listcheckers
 
 By default the script executes all of the listed checkers. Disable checkers with the `--skipcheckers` flag or execute specific checkers with the `--checkers` flag. If a checker has children, then the script skips or executes all the children checkers. In the example below, the script executes all checkers that find Content Security Policy issues, but skips the checkers that fire when the CSP header is missing.
 ``` bash
-python securityheaders.py https://scotthelme.co.uk --checkers CSPChecker --skipcheckers HeaderMissingChecker 
+python securityheaders.py https://scotthelme.co.uk --checkers CSPChecker --skipcheckers HeaderMissingChecker
 ```
 ![CSP Checkers.](./pics/multiplecheckers.png)
 
@@ -396,7 +399,7 @@ Blocking the attack is preferred (`XXSSProtectionBlockChecker`). The tool will t
 ```
 
 ## Cross-Origin Resource Sharing
-A Cross-Origin Resource Sharing (CORS) policy controls whether and how content running on other origins can interact with the origin that publishes the policy. 
+A Cross-Origin Resource Sharing (CORS) policy controls whether and how content running on other origins can interact with the origin that publishes the policy.
 
 The policy is defined by multiple headers:
 - **`Access-Control-Allow-Origin`**: a list of one or more URIs that may access the resource.
@@ -415,7 +418,7 @@ Access-Control-Allow-Origin: *
 ```
 
 ### Avoid using the null header with credentialed requests
-Allowing the null origin for requests with credentials enables an attacker to hijack the victim's session (redirects and local files have a null origin). 
+Allowing the null origin for requests with credentials enables an attacker to hijack the victim's session (redirects and local files have a null origin).
 The tool will thus report the following as insecure (`AccessControlAllowOriginNullChecker`).
 ```http
 Access-Control-Allow-Origin: null
@@ -515,7 +518,7 @@ camera *; microphone *
 
 
 ## Other
-- **Information Disclosure** (`InfoDisclosureChecker`): The tool also checks the presence of headers that disclose information about the application or tech stack. 
+- **Information Disclosure** (`InfoDisclosureChecker`): The tool also checks the presence of headers that disclose information about the application or tech stack.
 Such information enables the attacker to perform more targeted attacks. The tool flags thus any of the following as insecure.
 ``` http
 Server: Apache/2.4.1 (Unix)
@@ -530,7 +533,7 @@ The tool also identifies the following syntactical errors (`SyntaxChecker`) for 
 ```http
 Content-Security-Policy:
 ```
-- **Unknown directives** (`UnknownDirectiveChecker`): unknown directives (e.g. due to typos) are ignored by the browser. 
+- **Unknown directives** (`UnknownDirectiveChecker`): unknown directives (e.g. due to typos) are ignored by the browser.
 The tool will thus mark the following as an error.
 ```http
 Content-Security-Policy: scipt-src 'unsafe-eval';
@@ -586,7 +589,7 @@ The following pages were helpful in understanding the different security headers
 ## X-Content-Type-Options
 - [Spec](https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85))
 
-## X-Download-Options 
+## X-Download-Options
 - [Spec](https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/jj542450(v=vs.85))
 
 ## X-Permitted-Cross-Domain-Policies
