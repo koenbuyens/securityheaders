@@ -1,9 +1,10 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.clearsitedata import ClearSiteDataDirective
-from securityheaders.models.annotations import description, headername
+from securityheaders.models.annotations import *
 
 @description('Clearing browser data for origin.')
 @headername('clear-site-data')
+@headerref('https://w3c.github.io/webappsec-clear-site-data/')
 class ClearSiteData(SecurityHeader):
     directive = ClearSiteDataDirective
     

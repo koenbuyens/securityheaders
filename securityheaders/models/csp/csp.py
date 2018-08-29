@@ -4,11 +4,12 @@ import copy
 
 from securityheaders.models import SecurityHeader
 from securityheaders.models.csp import CSPDirective, CSPKeyword, CSPVersion
-from securityheaders.models.annotations import requiredheader, description, headername
+from securityheaders.models.annotations import *
 
 @requiredheader
 @description('This header protects against XSS attacks. By whitelisting sources of approved content, the browser does not load malicious assets.')
 @headername('content-security-policy')
+@headerref('http://www.w3.org/TR/CSP/')
 class CSP(SecurityHeader):
     directive = CSPDirective
     keyword = CSPKeyword

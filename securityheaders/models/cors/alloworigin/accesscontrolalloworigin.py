@@ -1,9 +1,10 @@
 from securityheaders.models import SecurityHeader
 from accesscontrolalloworigindirective import AccessControlAllowOriginDirective
-from securityheaders.models.annotations import description, headername
+from securityheaders.models.annotations import *
 
 @description('TODO')
 @headername('access-control-allow-origin')
+@headerref('https://fetch.spec.whatwg.org/')
 class AccessControlAllowOrigin(SecurityHeader):
     directive = AccessControlAllowOriginDirective
 

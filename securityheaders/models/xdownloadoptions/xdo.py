@@ -1,9 +1,10 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.xdownloadoptions import XDownloadOptionsDirective
-from securityheaders.models.annotations import description, headername
+from securityheaders.models.annotations import *
 
 @description('Prevent file downloads opening.')
 @headername('x-download-options')
+@headerref('https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/jj542450(v=vs.85)')
 class XDownloadOptions(SecurityHeader):
     directive = XDownloadOptionsDirective
     

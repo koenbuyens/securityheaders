@@ -1,10 +1,11 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.expectct import ExpectCTDirective
-from securityheaders.models.annotations import requiredheader, description, headername
+from securityheaders.models.annotations import *
 
 @requiredheader
 @description('Expect-CT allows a site to determine if they are ready to enforce their CT policy.')
 @headername('expect-ct')
+@headerref('https://tools.ietf.org/html/draft-ietf-httpbis-expect-ct-07')
 class ExpectCT(SecurityHeader):
     directive = ExpectCTDirective
 

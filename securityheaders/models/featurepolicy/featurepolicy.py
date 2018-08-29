@@ -1,11 +1,12 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.featurepolicy import FeaturePolicyDirective, FeaturePolicyKeyword
-from securityheaders.models.annotations import requiredheader, description, headername
+from securityheaders.models.annotations import *
 import copy
 
 @requiredheader
 @description('It is a new header that allows a site to control which features and APIs can be used in the browser.')
 @headername('feature-policy')
+@headerref('https://wicg.github.io/feature-policy/')
 class FeaturePolicy(SecurityHeader):
     directive = FeaturePolicyDirective
 

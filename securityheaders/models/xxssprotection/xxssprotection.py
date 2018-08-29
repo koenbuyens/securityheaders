@@ -1,10 +1,11 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.xxssprotection import XXSSProtectionDirective
-from securityheaders.models.annotations import requiredheader, description, headername
+from securityheaders.models.annotations import *
 
 @requiredheader
 @description('This header sets the configuration for the cross-site scripting filter built into most browsers. The recommended value is "X-XSS-Protection: 1; mode=block')
 @headername('x-xss-protection')
+@headerref('https://docs.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/dd565647(v=vs.85)')
 class XXSSProtection(SecurityHeader):
     directive = XXSSProtectionDirective
 

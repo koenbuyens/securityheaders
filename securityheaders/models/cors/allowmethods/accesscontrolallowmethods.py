@@ -1,9 +1,10 @@
 from securityheaders.models import SecurityHeader
 from accesscontrolallowmethodsdirective import AccessControlAllowMethodsDirective
-from securityheaders.models.annotations import description, headername
+from securityheaders.models.annotations import *
 
 @description('TODO')
 @headername('access-control-allow-methods')
+@headerref('https://fetch.spec.whatwg.org/')
 class AccessControlAllowMethods(SecurityHeader):
     directive = AccessControlAllowMethodsDirective
 

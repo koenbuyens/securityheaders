@@ -37,3 +37,14 @@ class headername:
     def __call__(self, fn, *args, **kwargs):
         fn.headerkey = self.value
         return fn
+
+
+class headerref:
+    def __init__(self, value):
+        self.value = value
+    
+    def __call__(self, fn, *args, **kwargs):
+        if not hasattr(fn, 'headerrefs'):
+            fn.headerrefs = []
+        fn.headerrefs.append(self.value)
+        return fn

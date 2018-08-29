@@ -1,9 +1,10 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.xpcdp import XPermittedCrossDomainPoliciesDirective
-from securityheaders.models.annotations import description, headername
+from securityheaders.models.annotations import *
 
 @description('This header defines a cross-domain policy for clients such as Adobe Flash Player or Adobe Acrobat.')
 @headername('x-permitted-cross-domain-policies')
+@headerref('https://www.adobe.com/devnet/adobe-media-server/articles/cross-domain-xml-for-streaming.html')
 class XPermittedCrossDomainPolicies(SecurityHeader):
     directive = XPermittedCrossDomainPoliciesDirective
     

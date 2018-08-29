@@ -1,10 +1,11 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.referrerpolicy import ReferrerPolicyDirective
-from securityheaders.models.annotations import requiredheader, description, headername
+from securityheaders.models.annotations import *
 
 @requiredheader
 @description('It is a new header that allows a site to control how much information the browser includes with navigations away from a document and should be set by all sites.')
 @headername('referrer-policy')
+@headerref('https://www.w3.org/TR/referrer-policy/')
 class ReferrerPolicy(SecurityHeader):
     directive = ReferrerPolicyDirective
 

@@ -1,10 +1,11 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.xframeoptions import XFrameOptionsDirective
-from securityheaders.models.annotations import requiredheader, description, headername
+from securityheaders.models.annotations import *
 
 @requiredheader
 @description('This header tells the browser whether the site can be framed. Not allowing framing defends against clickjacking attacks.')
 @headername('x-frame-options')
+@headerref('https://tools.ietf.org/html/rfc7034')
 class XFrameOptions(SecurityHeader):
     directive = XFrameOptionsDirective
 

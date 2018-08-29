@@ -1,9 +1,10 @@
 from securityheaders.models import SecurityHeader
 from accesscontrolallowheadersdirective import AccessControlAllowHeadersDirective
-from securityheaders.models.annotations import description, headername
+from securityheaders.models.annotations import *
 
 @description('TODO')
 @headername('access-control-allow-headers')
+@headerref('https://fetch.spec.whatwg.org/')
 class AccessControlAllowHeaders(SecurityHeader):
     directive = AccessControlAllowHeadersDirective
 

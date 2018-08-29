@@ -1,10 +1,11 @@
 from securityheaders.models import SecurityHeader
 from securityheaders.models.hsts import HSTSDirective
-from securityheaders.models.annotations import requiredheader, description, headername
+from securityheaders.models.annotations import *
 
 @requiredheader
 @description('This header strengthens your implementation of TLS by getting the User Agent to enforce the use of HTTPS. The recommended value us "strict-transport-security: max-age=31536000; includeSubDomains".')
 @headername('strict-transport-security')
+@headerref('http://tools.ietf.org/html/rfc6797')
 class HSTS(SecurityHeader):
     directive = HSTSDirective
 
