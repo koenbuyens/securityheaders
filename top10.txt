@@ -1,0 +1,11 @@
+google.com
+facebook.com
+youtube.com
+twitter.com
+microsoft.com
+linkedin.com
+wikipedia.org
+plus.google.com
+instagram.com
+apple.com
+

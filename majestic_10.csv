@@ -1,0 +1,11 @@
+GlobalRank,TldRank,Domain,TLD,RefSubNets,RefIPs,IDN_Domain,IDN_TLD,PrevGlobalRank,PrevTldRank,PrevRefSubNets,PrevRefIPs
+1,1,google.com,com,469841,3006056,google.com,com,1,1,470197,3021955
+2,2,facebook.com,com,456392,3052087,facebook.com,com,2,2,456832,3069603
+3,3,youtube.com,com,415722,2462185,youtube.com,com,3,3,416072,2479139
+4,4,twitter.com,com,413907,2551414,twitter.com,com,4,4,414287,2566563
+5,5,microsoft.com,com,309048,1183023,microsoft.com,com,5,5,309628,1186678
+6,6,linkedin.com,com,297357,1359114,linkedin.com,com,6,6,297855,1367342
+7,1,wikipedia.org,org,290977,1257665,wikipedia.org,org,7,1,291338,1265290
+8,7,plus.google.com,com,287437,1463868,plus.google.com,com,8,7,287559,1471687
+9,8,instagram.com,com,282291,1387201,instagram.com,com,9,8,282435,1394292
+10,9,apple.com,com,280746,1071939,apple.com,com,10,9,281145,1078204
