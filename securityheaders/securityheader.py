@@ -128,7 +128,19 @@ class SecurityHeaders(object):
                         if leaf not in options.keys():
                             options[leaf]=dict()
                         options[leaf][check] = options[checker][check]      
-        return HeaderEvaluator().evaluate(headermap,options)
+        tmp = HeaderEvaluator().evaluate(headermap,options)
+        result = []
+        if 'severity' in options.keys():
+            try:
+                severity = FindingSeverity[options['severity']]
+            except:
+                severity = FindingSeverity.NONE
+            for finding in tmp:
+                if finding.severity.value >= severity.value:
+                    result.append(finding)
+        else:
+            result = tmp
+        return result
 
     def check_headers_parallel(self, urls, options=None, callback=None):
         if not options:
