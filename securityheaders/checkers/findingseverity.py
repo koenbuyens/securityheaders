@@ -1,6 +1,7 @@
 from enum import Enum
 
 class FindingSeverity(Enum):
+    ERROR = 2000
     CRITICAL = 1000 #Critical severity
     HIGH = 900 #high severity
     SYNTAX = 800 #syntax error

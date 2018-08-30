@@ -128,19 +128,7 @@ class SecurityHeaders(object):
                         if leaf not in options.keys():
                             options[leaf]=dict()
                         options[leaf][check] = options[checker][check]      
-        tmp = HeaderEvaluator().evaluate(headermap,options)
-        result = []
-        if 'severity' in options.keys():
-            try:
-                severity = FindingSeverity[options['severity']]
-            except:
-                severity = FindingSeverity.NONE
-            for finding in tmp:
-                if finding.severity.value >= severity.value:
-                    result.append(finding)
-        else:
-            result = tmp
-        return result
+        return HeaderEvaluator().evaluate(headermap,options)
 
     def check_headers_parallel(self, urls, options=None, callback=None):
         if not options:
@@ -149,7 +137,7 @@ class SecurityHeaders(object):
         if Pool:
             results = []
             freeze_support()
-            pool = Pool(processes=100)    
+            pool = Pool(processes=100)
             for url in urls:
                 result = pool.apply_async(self.check_headers, args=(url, options.get('redirects'), options), callback=callback)
                 results.append(result)
@@ -168,7 +156,6 @@ class SecurityHeaders(object):
             follow_redirects (Optional[str]): How deep we follow the redirects, 
             value 0 disables redirects.
         """
-
         if not options:
             options= self.options.result()
 
