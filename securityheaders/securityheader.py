@@ -104,6 +104,8 @@ class SecurityHeaders(object):
             s = header.split(':', 1)
             if(len(s) == 2):
                 headers.append((s[0].lower(),s[1]))
+            else:
+                headers.append((s[0].lower(),''))
         return self.check_headers_with_map(headers, options)
 
     def check_headers_with_map(self, headermap, options=None):
@@ -113,7 +115,7 @@ class SecurityHeaders(object):
             options['checks'] = []
         if not 'unwanted' in options.keys():
             options['unwanted'] = []
-        checks = CheckerFactory().getactualcheckers(options['checks'])        
+        checks = CheckerFactory().getactualcheckers(options['checks'])     
         unwanted = CheckerFactory().getactualcheckers(options['unwanted'])
         options['checks'] = [e for e in checks if e not in unwanted]
         options['unwanted'] = None

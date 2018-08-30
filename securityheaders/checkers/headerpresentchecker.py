@@ -1,7 +1,7 @@
 from securityheaders.checkers import Checker, FindingType, Finding, FindingSeverity
 
 class HeaderPresentChecker(Checker):
-    def check(self, headers, header, description, options):
+    def mycheck(self, headers, header, description, options):
         if not header or not headers:
            return []
 
