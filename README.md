@@ -1,5 +1,5 @@
 # TL; DR
-The script validates whether the headers pertaining to security are present and if present, whether they have been configured securely.
+The script (and burp plugin) validates whether the headers pertaining to security are present and if present, whether they have been configured securely.
 It implements checks identified by
 - http://securityheaders.io/
 - https://csp.withgoogle.com
