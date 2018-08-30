@@ -13,9 +13,9 @@ class ExpectCTNotEnforcedChecker(ExpectCTChecker):
         
         findings = []
         if not expectct.enforce():
-            findings.append(Finding(expectct.headerkey,FindingType.NOT_ENFORCED,expectct.headerkey + 'is not enforced as ' + ExpectCT.directive.ENFORCE.value  + ' is not set.', FindingSeverity.LOW, None))
+            findings.append(Finding(expectct.headerkey,FindingType.NOT_ENFORCED,expectct.headerkey + 'is not enforced as ' + ExpectCT.directive.ENFORCE.value  + ' is not set.', FindingSeverity.LOW, ExpectCT.directive.ENFORCE,None))
         if expectct.maxage() == 0:
-            findings.append(Finding(expectct.headerkey,FindingType.NOT_ENFORCED,expectct.headerkey + 'is not enforced as ' + ExpectCT.directive.MAX_AGE.value  + ' is set to 0', FindingSeverity.LOW, '0'))
-        elif expectct.maxage() < 3000:
-            findings.append(Finding(expectct.headerkey,FindingType.NOT_ENFORCED,expectct.headerkey + 'is only enforced for a very short amount of time as ' + ExpectCT.directive.MAX_AGE.value  + ' is set to ' + str(expectct.maxage()), FindingSeverity.LOW, str(expectct.maxage())))
+            findings.append(Finding(expectct.headerkey,FindingType.NOT_ENFORCED,expectct.headerkey + 'is not enforced as ' + ExpectCT.directive.MAX_AGE.value  + ' is set to 0', FindingSeverity.LOW, ExpectCT.directive.MAX_AGE,'0'))
+        elif expectct.maxage() and expectct.maxage() < 3000:
+            findings.append(Finding(expectct.headerkey,FindingType.NOT_ENFORCED,expectct.headerkey + 'is only enforced for a very short amount of time as ' + ExpectCT.directive.MAX_AGE.value  + ' is set to ' + str(expectct.maxage()), FindingSeverity.LOW, ExpectCT.directive.MAX_AGE,str(expectct.maxage())))
         return findings

@@ -13,8 +13,6 @@ class EmptyDirectiveChecker(SyntaxChecker):
                 if obj and obj.parsedstring:
                     findings.extend(self.mycheck(obj))
             except:
-                import traceback
-                print traceback.format_exc()
                 pass
         return findings
 
@@ -33,5 +31,5 @@ class EmptyDirectiveChecker(SyntaxChecker):
             if required in data.keys():
                 value = data[required]
                 if not value:
-                    result.append(Finding(data.headerkey, FindingType.MISSING_DIRECTIVES,str(required) + ' is defined, but does not have a value.',FindingSeverity.SYNTAX,None))
+                    result.append(Finding(data.headerkey, FindingType.MISSING_VALUES,str(required) + ' is defined, but does not have a value.',FindingSeverity.SYNTAX,required, None))
         return result

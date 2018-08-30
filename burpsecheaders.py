@@ -62,16 +62,19 @@ class BurpExtender(IBurpExtender, IScannerCheck):
                 kv = head.lower().split(":",1)
                 if str(kv[0].lower()) == str(header):
                     headerstart = self._helpers.indexOf(response,bytearray(header), False, 0, reslen)
-                    matches.append(array('i',[headerstart,headerstart+len(bytearray(header))]))
-                    if not ftype.startswith('missing_directives'): 
-                        directivestart = self._helpers.indexOf(response,bytearray(directive),False,headerstart,reslen)
-                        if directivestart != -1:
-                            matches.append(array('i',[directivestart,directivestart+len(bytearray(directive))]))
-                        else:
-                            directivestart = headerstart
-                        if value:
-                            valuestart = self._helpers.indexOf(response,bytearray(value),False,directivestart,reslen)
-                            matches.append(array('i',[valuestart,valuestart+len(bytearray(value))]))
+                    headerend = headerstart+len(bytearray(header))
+                    matches.append(array('i',[headerstart,headerend]))
+                    directivestart = self._helpers.indexOf(response,bytearray(directive),False,headerstart,reslen)
+                    directiveend = directivestart+len(bytearray(directive))
+                    if directivestart != -1 and directivestart != headerstart:
+                        matches.append(array('i',[directivestart,directiveend]))
+                    else:
+                        directivestart = headerstart
+                    if value:
+                        valuestart = self._helpers.indexOf(response,bytearray(value),False,directivestart,reslen)
+                        valueend = valuestart+len(bytearray(value))
+                        if valuestart != -1 and valuestart != directivestart:
+                            matches.append(array('i',[valuestart,valueend]))
         return matches
 
 
@@ -87,19 +90,23 @@ class BurpExtender(IBurpExtender, IScannerCheck):
             if header not in self.analyzed[host]:
                 toanalyze.append(header)
         self.analyzed[host].extend(toanalyze)
+
         findings = self.api.check_headers_with_list(toanalyze, self.getOptions())
         if not findings or len(findings) == 0:
             return None
 
 
+
         result = list()
         for finding in findings:
-            if not "info_" in str(finding.ftype) and not "missing_header" in str(finding.ftype):
-                matches = [self._callbacks.applyMarkers(baseRequestResponse, None,self._get_matches(baseRequestResponse.getResponse(),response.getHeaders(),[finding]))]
+            if not "none" in str(finding.severity).lower() and not "missing_header" in str(finding.ftype).lower():
+                try:
+                    matches = [self._callbacks.applyMarkers(baseRequestResponse, None,self._get_matches(baseRequestResponse.getResponse(),response.getHeaders(),[finding]))]
+                except:
+                    matches = None                
                 result.append(CustomScanIssue(baseRequestResponse.getHttpService(),request.getUrl(),matches,finding))
         return result
 
-    #TODO: should do some cors stuff here
     def doActiveScan(self, baseRequestResponse, insertionPoint):
         pass
 
@@ -123,11 +130,7 @@ class CustomScanIssue (IScanIssue):
         self._httpMessages = httpMessages
         self.assignSeverity(finding)
         self.assignConfidence(finding)
-        val = finding.description +"\n\nHeader " + finding.header.lower() 
-        if finding.directive:
-            val = val + " had a directive " + str(finding.directive)
-        if finding.value:
-            val = val +  " with as value: " + str(finding.value).strip() 
+        val = finding.description
         self._name = "Insecure " + str(finding.header) +": " +  str(finding.ftype).lower().replace('_', ' ')
         self._detail = val
         self._finding = finding

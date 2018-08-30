@@ -30,6 +30,6 @@ class UnknownDirectiveChecker(SyntaxChecker):
                 if directive.endswith(seperator):
                     findings.append(Finding(data.headerkey, FindingType.UNKNOWN_DIRECTIVE,str(data.headerkey) + " directives don't end with a " + str(seperator),FindingSeverity.SYNTAX, None, directive))
                 else:
-                    findings.append(Finding(data.headerkey, FindingType.UNKNOWN_DIRECTIVE,'Directive "' + str(directive) + '" is not a known ' + str(data.headerkey) + ' directive.',FindingSeverity.SYNTAX,None, directive))
+                    findings.append(Finding(data.headerkey, FindingType.UNKNOWN_DIRECTIVE,'Directive "' + str(directive) + '" is not a known ' + str(data.headerkey) + ' directive.',FindingSeverity.SYNTAX,directive))
 
         return findings

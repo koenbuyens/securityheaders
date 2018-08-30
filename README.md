@@ -546,7 +546,7 @@ Content-Security-Policy: script-src 'unsafe-eval' object-src
 ```http
 Expect-CT: enforce
 ```
-- **Empty Directives** (``): using a directive without a required value is an issue. The tool will thus mark the following as an error.
+- **Empty Directives** (`EmptyDirectiveChecker`): using a directive without a required value is an issue. The tool will thus mark the following as an error.
 ```http
 x-frame-options:allow-from
 ```

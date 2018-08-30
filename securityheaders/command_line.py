@@ -11,7 +11,8 @@ import sys
 import errno
 
 from urlparse import urlparse
-from securityheaders import SecurityHeaders
+from securityheaders import SecurityHeaders, FindingSeverity
+
 
 from os import listdir, makedirs
 from os.path import isfile, join, exists
@@ -109,7 +110,8 @@ def main(args=sys.argv[1:],output=sys):
     parser.add_argument('--screen', action='store_true', dest='screen', help='Print result to the screen')
     parser.add_argument('--file', dest='temp', metavar="./tmp", default=None, type=str, help='If the results are saved to a file, then they are put in this directory.')
     parser.add_argument('--formatter', metavar='Tabulate',dest='formatter', default='console',choices=api.get_all_formatter_names(),help='How do you want to format the findings.')
-    parser.add_argument('--flatten', action='store_true', dest='flatten', help='Merge multiple results into one table.')      
+    parser.add_argument('--flatten', action='store_true', dest='flatten', help='Merge multiple results into one table.') 
+    parser.add_argument('--severity', dest='severity', metavar="NONE", default='NONE', type=str, choices=[str(a) for a in list(FindingSeverity)],  help='Minimum severity level.')        
 
     checkernames = api.get_all_checker_names()
     parser.add_argument('--skipcheckers',dest='unwanted', nargs='*',metavar='checkername',default=[],type=str,help='A list of checkers to skip.', choices=checkernames)

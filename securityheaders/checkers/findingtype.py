@@ -13,6 +13,7 @@ class FindingType(Enum):
     IGNORED = 405
     DEPRECATED_DIRECTIVE = 309
     MISSING_DIRECTIVES = 300
+    MISSING_VALUES = 299
 
 
     #generic issues
