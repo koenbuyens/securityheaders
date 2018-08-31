@@ -13,8 +13,6 @@ class InfoDirectiveCollector(InfoCollector):
                 if obj and obj.parsedstring:
                     findings.extend(self.mycheck(obj))
             except:
-                import traceback
-                print traceback.format_exc()
                 pass
         return findings
 

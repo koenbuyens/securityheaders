@@ -21,8 +21,6 @@ class InfoURLCollector(InfoCollector):
                             for url in urls:
                                 findings.append(Finding(obj.headerkey, FindingType.INFO_URL, str(url), FindingSeverity.NONE, directive, str(url) ))
             except:
-                import traceback
-                print traceback.format_exc()
                 pass
             
         return findings
