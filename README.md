@@ -603,7 +603,6 @@ The following pages were helpful in understanding the different security headers
 - TODOs in the above README including References
 - Checkers for Set-Cookie, Cache-Control
 - Decent analysis of what is a good feature policy
-- Checkers for Content-Security-Policy-Report-Only (inherit from CSP, but lower severity to informational).
 - Configurable ratings
 - Good descriptions, including references to CWE, OWASP cheat sheets and secure headers project.
 - Refactor: the horrible FindingType enum
