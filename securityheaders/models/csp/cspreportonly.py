@@ -11,6 +11,8 @@ from securityheaders.models.annotations import description, headername
 class CSPReportOnly(CSP):
     directive = CSPDirective
     keyword = CSPKeyword
+    
 
     def __init__(self, unparsedstring):
+       self.__class__.required = False
        SecurityHeader.__init__(self, unparsedstring, CSPDirective, CSPKeyword)
