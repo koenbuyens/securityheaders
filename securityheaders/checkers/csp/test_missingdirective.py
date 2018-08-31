@@ -1,10 +1,11 @@
 import unittest
 
-from securityheaders.checkers.csp import CSPMissingDirectiveChecker
+from securityheaders.checkers.csp import CSPMissingDirectiveChecker, CSPReportOnlyMissingDirectiveChecker
 
 class MissingDirectiveTest(unittest.TestCase):
     def setUp(self):
        self.x = CSPMissingDirectiveChecker()
+       self.y = CSPReportOnlyMissingDirectiveChecker()
 
     def test_checkNoCSP(self):
        nox = dict()
@@ -68,6 +69,20 @@ class MissingDirectiveTest(unittest.TestCase):
        result = self.x.check(hasx8)
        self.assertIsNotNone(result)
        self.assertEquals(len(result), 2) #base-uri; others are done by default-src
+
+    def test_ObjectSrcPresentOtherMissingRO(self):
+        hasx10 = dict()
+        hasx10['content-security-policy-report-only'] = "child-src 'none'; object-src 'none';"
+        result = self.y.check(hasx10)
+        self.assertIsNotNone(result)
+        self.assertEquals(len(result), 3) #missing default-src, script-src, and base-uri directives
+
+    def test_ScriptSrcPresentOtherMissingRO(self):
+        hasx11 = dict()
+        hasx11['content-security-policy-report-only'] = "child-src 'none'; script-src 'none';"
+        result = self.y.check(hasx11)
+        self.assertIsNotNone(result)
+        self.assertEquals(len(result), 3) #missing default-src, object-src, and base-uri directives
 
     def test_ObjectSrcPresentOtherMissing(self):
        hasx10 = dict()

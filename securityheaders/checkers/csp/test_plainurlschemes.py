@@ -1,12 +1,14 @@
 import unittest
 
-from securityheaders.checkers.csp import CSPPlainUrlSchemesChecker
+from securityheaders.checkers.csp import CSPPlainUrlSchemesChecker, CSPReportOnlyPlainUrlSchemesChecker
 
 
 class UnsafeUrkSchemeTest(unittest.TestCase):
 
     def setUp(self):
-       self.x = CSPPlainUrlSchemesChecker()
+        self.x = CSPPlainUrlSchemesChecker()
+        self.y = CSPReportOnlyPlainUrlSchemesChecker()
+
 
     def test_checkNoCSP(self):
        nox = dict()
@@ -39,6 +41,17 @@ class UnsafeUrkSchemeTest(unittest.TestCase):
        hasx2 = dict()
        hasx2['content-security-policy'] = "default-src 'self'; script-src tweakers.net"
        self.assertEquals(self.x.check(hasx2), [])
+
+    def test_httpro(self):
+        hasx3 = dict()
+        hasx3['content-security-policy-report-only'] = "script-src http:"
+        self.assertIsNotNone(self.y.check(hasx3))
+        self.assertEquals(len(self.y.check(hasx3)), 1) #http:
+    
+    def test_validCSPro(self):
+        hasx2 = dict()
+        hasx2['content-security-policy-report-only'] = "default-src 'self'; script-src tweakers.net"
+        self.assertEquals(self.y.check(hasx2), [])
 
 if __name__ == '__main__':
     unittest.main()

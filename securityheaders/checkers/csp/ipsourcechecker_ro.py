@@ -1,8 +1,7 @@
-from checker import CSPChecker
-
+from checkerro import CSPReportOnlyChecker
 from cspcheck_ipsource import CSPCheckIPSource
 
-class CSPIPSourceChecker(CSPChecker):
+class CSPReportOnlyIPSourceChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()):
         csp = self.getcsp(headers)
         if not csp:

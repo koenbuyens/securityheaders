@@ -1,12 +1,13 @@
 import unittest
 
 
-from securityheaders.checkers.csp import CSPIPSourceChecker
+from securityheaders.checkers.csp import CSPIPSourceChecker, CSPReportOnlyIPSourceChecker
 
 
 class IPSourceTest(unittest.TestCase):
     def setUp(self):
        self.x = CSPIPSourceChecker()
+       self.y = CSPReportOnlyIPSourceChecker()
 
     def test_checkNoCSP(self):
        nox = dict()
@@ -28,6 +29,18 @@ class IPSourceTest(unittest.TestCase):
        result = self.x.check(hasx5)
        self.assertIsNotNone(result)
        self.assertEquals(len(result), 1)
+    
+    def test_NoneCspRO(self):
+        hasx = dict()
+        hasx['content-security-policy-report-only'] = None
+        self.assertEquals(self.y.check(hasx), [])
+    
+    def test_IpSourceRO(self):
+        hasx5 = dict()
+        hasx5['content-security-policy-report-only'] = 'script-src 127.0.0.1'
+        result = self.y.check(hasx5)
+        self.assertIsNotNone(result)
+        self.assertEquals(len(result), 1)
 
     def test_IpSource2(self):
        hasx4 = dict()

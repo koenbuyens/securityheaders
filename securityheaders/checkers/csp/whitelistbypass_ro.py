@@ -1,7 +1,7 @@
-from checker import CSPChecker
+from checkerro import CSPReportOnlyChecker
 from cspcheck_whitelist import CSPCheckWhitelist
 
-class CSPScriptWhitelistBypassChecker(CSPChecker):
+class CSPReportOnlyScriptWhitelistBypassChecker(CSPReportOnlyChecker):
     def myoptions(cls):
         return {'angular':list, 'jsonp':list, 'jsonpeval':list}
     

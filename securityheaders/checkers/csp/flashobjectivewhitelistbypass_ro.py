@@ -1,8 +1,8 @@
 from securityheaders import Util
-from checker import CSPChecker
+from checkerro import CSPReportOnlyChecker
 from cspcheck_flash import CSPCheckFlash
 
-class CSPFlashObjectWhitelistBypassChecker(CSPChecker):
+class CSPReportOnlyFlashObjectWhitelistBypassChecker(CSPReportOnlyChecker):
 
     def myoptions(cls):
         return {'bypasses':list}

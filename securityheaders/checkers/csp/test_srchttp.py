@@ -1,11 +1,12 @@
 
 import unittest
 
-from securityheaders.checkers.csp import CSPSCRHTTPChecker
+from securityheaders.checkers.csp import CSPSCRHTTPChecker, CSPReportOnlySCRHTTPChecker
 
 class HTTPTest(unittest.TestCase):
     def setUp(self):
        self.x = CSPSCRHTTPChecker()
+       self.y = CSPReportOnlySCRHTTPChecker()
 
     def test_checkNoCSP(self):
        nox = dict()
@@ -32,6 +33,18 @@ class HTTPTest(unittest.TestCase):
        hasx4 = dict()
        hasx4['content-security-policy'] = "report-uri https://foo.bar/csp"
        self.assertEquals(self.x.check(hasx4), [])
+    
+    def test_HTTPURIRO(self):
+        hasx3 = dict()
+        hasx3['content-security-policy-report-only'] = "report-uri http://foo.bar/csp"
+        result = self.y.check(hasx3)
+        self.assertIsNotNone(result)
+        self.assertEquals(len(result), 1)
+    
+    def test_HTTPSURIRO(self):
+        hasx4 = dict()
+        hasx4['content-security-policy-report-only'] = "report-uri https://foo.bar/csp"
+        self.assertEquals(self.y.check(hasx4), [])
 
     def test_NoURI(self):
        hasx2 = dict()

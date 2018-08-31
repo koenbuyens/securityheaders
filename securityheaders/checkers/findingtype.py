@@ -40,6 +40,8 @@ class FindingType(Enum):
     NONCE_HASH = 402
     UNSAFE_INLINE_FALLBACK = 403
     WHITELIST_FALLBACK = 404
+    
+    REPORT_ONLY=410
 
     #CORS issues
     STAR_ORIGIN = 500

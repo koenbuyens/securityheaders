@@ -1,11 +1,12 @@
 
 import unittest
 
-from securityheaders.checkers.csp import CSPWildCardChecker
+from securityheaders.checkers.csp import CSPWildCardChecker, CSPReportOnlyWildCardChecker
 
 class WildCardTest(unittest.TestCase):
     def setUp(self):
        self.x = CSPWildCardChecker()
+       self.y = CSPReportOnlyWildCardChecker()
 
     def test_checkNoCSP(self):
        nox = dict()
@@ -37,6 +38,11 @@ class WildCardTest(unittest.TestCase):
        hasx3 = dict()
        hasx3['content-security-policy'] = "report-uri http://foo.bar/csp"
        self.assertEquals(self.x.check(hasx3), [])
+    
+    def test_NoWildCard2(self):
+        hasx3 = dict()
+        hasx3['content-security-policy-report-only'] = "report-uri http://foo.bar/csp"
+        self.assertEquals(self.y.check(hasx3), [])
 
     def test_NoWildCard3(self):
        hasx2 = dict()
@@ -49,6 +55,13 @@ class WildCardTest(unittest.TestCase):
        result = self.x.check(hasx6)
        self.assertIsNotNone(result)
        self.assertEquals(len(result), 1)
+    
+    def test_NoWildCard2(self):
+        hasx6 = dict()
+        hasx6['content-security-policy-report-only'] = "object-src *; script-src 'none';"
+        result = self.y.check(hasx6)
+        self.assertIsNotNone(result)
+        self.assertEquals(len(result), 1)
 
     def test_NoWildCardDefaultSrc(self):
        hasx7 = dict()

@@ -1,7 +1,7 @@
-from checker import CSPChecker
+from checkerro import CSPReportOnlyChecker
 from cspcheck_unsafeeval import CSPCheckUnsafeEval
 
-class CSPUnsafeEvalChecker(CSPChecker):
+class CSPReportOnlyUnsafeEvalChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()): 
         csp = self.getcsp(headers)
         if not csp:

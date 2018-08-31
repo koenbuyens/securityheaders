@@ -1,11 +1,12 @@
 import unittest
 
-from securityheaders.checkers.csp import CSPNonceLengthChecker
+from securityheaders.checkers.csp import CSPNonceLengthChecker, CSPReportOnlyNonceLengthChecker
 
 class NonceLengthTest(unittest.TestCase):
 
     def setUp(self):
         self.x = CSPNonceLengthChecker()
+        self.y = CSPReportOnlyNonceLengthChecker()
 
     def test_checkNoCSP(self):
         nox = dict()
@@ -34,11 +35,23 @@ class NonceLengthTest(unittest.TestCase):
         result = self.x.check(hasx4)
         self.assertIsNotNone(result)
         self.assertEquals(len(result), 1)
+    
+    def test_ShortNonce2RO(self):
+        hasx4 = dict()
+        hasx4['content-security-policy-report-only'] = "default-src 'self'; script-src 'nonce-'"
+        result = self.y.check(hasx4)
+        self.assertIsNotNone(result)
+        self.assertEquals(len(result), 1)
 
     def test_ValidNonce(self):
         hasx2 = dict()
         hasx2['content-security-policy'] = "default-src 'self'; script-src 'nonce-4AEemGb0xJptoIGFP3Nd'"
         self.assertEquals(self.x.check(hasx2), [])
+
+    def test_ValidNonceRO(self):
+        hasx2 = dict()
+        hasx2['content-security-policy-report-only'] = "default-src 'self'; script-src 'nonce-4AEemGb0xJptoIGFP3Nd'"
+        self.assertEquals(self.y.check(hasx2), [])
 
 
 if __name__ == '__main__':

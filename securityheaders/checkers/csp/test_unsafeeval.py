@@ -1,10 +1,11 @@
 import unittest
 
-from securityheaders.checkers.csp import CSPUnsafeEvalChecker
+from securityheaders.checkers.csp import CSPUnsafeEvalChecker, CSPReportOnlyUnsafeEvalChecker
 
 class UnsafeEvalTest(unittest.TestCase):
     def setUp(self):
-       self.x = CSPUnsafeEvalChecker()
+        self.x = CSPUnsafeEvalChecker()
+        self.y = CSPReportOnlyUnsafeEvalChecker()
 
     def test_checkNoCSP(self):
        nox = dict()
@@ -36,6 +37,18 @@ class UnsafeEvalTest(unittest.TestCase):
        hasx2 = dict()
        hasx2['content-security-policy'] = "default-src 'self'; script-src tweakers.net"
        self.assertEquals(self.x.check(hasx2), [])
+
+    def test_UnsafeEvalNokRO(self):
+        hasx4 = dict()
+        hasx4['content-security-policy-report-only'] = "script-src 'unsafe-eval'"
+        result = self.y.check(hasx4)
+        self.assertIsNotNone(result)
+        self.assertEquals(len(result), 1)
+    
+    def test_CSPOKRO(self):
+        hasx2 = dict()
+        hasx2['content-security-policy-report-only'] = "default-src 'self'; script-src tweakers.net"
+        self.assertEquals(self.y.check(hasx2), [])
 
     def test_UnsafeEvalNok2(self):
        hasx6 = dict()

@@ -1,10 +1,12 @@
 import unittest
 
-from securityheaders.checkers.csp import CSPUnsafeInlineChecker
+from securityheaders.checkers.csp import CSPUnsafeInlineChecker, CSPReportOnlyUnsafeInlineChecker
 
 class UnsafeInlineTest(unittest.TestCase):
     def setUp(self):
-       self.x = CSPUnsafeInlineChecker()
+        self.x = CSPUnsafeInlineChecker()
+        self.y = CSPReportOnlyUnsafeInlineChecker()
+
 
     def test_checkNoCSP(self):
        nox = dict()
@@ -43,6 +45,18 @@ class UnsafeInlineTest(unittest.TestCase):
        result = self.x.check(hasx6)
        self.assertIsNotNone(result)
        self.assertEquals(len(result), 1)
+    
+    def test_CSPro(self):
+        hasx2 = dict()
+        hasx2['content-security-policy-report-only'] = "default-src 'self'; script-src tweakers.net"
+        self.assertEquals(self.y.check(hasx2), [])
+
+    def test_UnsafeInlineNok2ro(self):
+        hasx6 = dict()
+        hasx6['content-security-policy-report-only'] = "default-src 'none'; script-src 'unsafe-inline'; "
+        result = self.y.check(hasx6)
+        self.assertIsNotNone(result)
+        self.assertEquals(len(result), 1)
 
     def test_UnsafeInlineNok3(self):
        hasx7 = dict()
