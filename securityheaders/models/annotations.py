@@ -6,6 +6,10 @@ def requireddirective(cls):
     cls.requireddirective = True
     return cls
 
+def anydirective(cls):
+    cls.anydirective = True
+    return cls
+
 class requireddirectives:
     def __init__(self, *args):
         self.values = list(args)

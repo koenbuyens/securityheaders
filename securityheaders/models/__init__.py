@@ -32,6 +32,7 @@ from xaspnetversion import *
 from xaspnetmvcversion import *
 from hpkp import *
 from xpcdp import *
+from setcookie import *
 
 __all__ = ['annotations','csp','cors','clearsitedata','hsts','xcontenttypeoptions','xframeoptions','xxssprotection','featurepolicy','referrerpolicy','server','xpoweredby', 'expectct','xcsp','xwebkitcsp','xpcdp','xaspnetversion','xaspnetmvcversion','hpkp','xdownloadoptions']
 clazzes = list(Util.inheritors(Header))

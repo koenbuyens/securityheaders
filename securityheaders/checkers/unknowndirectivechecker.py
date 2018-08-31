@@ -24,12 +24,13 @@ class UnknownDirectiveChecker(SyntaxChecker):
             return findings
 
         directiveclazz = data.directive
-        seperator = directiveclazz.directivevalueseperator()
-        for directive in data.keys():
-            if not directiveclazz.isDirective(directive):
-                if directive.endswith(seperator):
-                    findings.append(Finding(data.headerkey, FindingType.UNKNOWN_DIRECTIVE,str(data.headerkey) + " directives don't end with a " + str(seperator),FindingSeverity.SYNTAX, None, directive))
-                else:
-                    findings.append(Finding(data.headerkey, FindingType.UNKNOWN_DIRECTIVE,'Directive "' + str(directive) + '" is not a known ' + str(data.headerkey) + ' directive.',FindingSeverity.SYNTAX,directive))
+        if  not hasattr(directiveclazz,'anydirective') or  (hasattr(directiveclazz,'anydirective') and not directiveclazz.anydirective):
+            seperator = directiveclazz.directivevalueseperator()
+            for directive in data.keys():
+                if not directiveclazz.isDirective(directive):
+                    if directive.endswith(seperator):
+                        findings.append(Finding(data.headerkey, FindingType.UNKNOWN_DIRECTIVE,str(data.headerkey) + " directives don't end with a " + str(seperator),FindingSeverity.SYNTAX, None, directive))
+                    else:
+                        findings.append(Finding(data.headerkey, FindingType.UNKNOWN_DIRECTIVE,'Directive "' + str(directive) + '" is not a known ' + str(data.headerkey) + ' directive.',FindingSeverity.SYNTAX,directive))
 
         return findings

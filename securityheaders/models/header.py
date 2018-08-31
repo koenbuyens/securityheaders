@@ -67,12 +67,15 @@ class Header(object):
             return None #only happens when self.parsedstring is none
 
     def keys(self):
-        if self.parsedstring:
+        if self.parsedstring and hasattr(self.parsedstring, 'keys'):
             return self.parsedstring.keys()
         return []
 
     def directives(self):
         return self.keys()
+
+    def getdirectives(self):
+        return self.keys()    
 
     def hasdirectives(self):
         return self.parsedstring and not len(self.parsedstring) == 0

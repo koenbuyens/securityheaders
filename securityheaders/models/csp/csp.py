@@ -194,11 +194,6 @@ class CSP(SecurityHeader):
                     result.append(str(directiveValue))
         return result 
 
-    def getdirectives(self):
-        if self.parsedstring:
-            return self.parsedstring.keys()
-        return []       
-
 
     @staticmethod
     def isNonce(nonce, opt_strict=False):

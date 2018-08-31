@@ -15,10 +15,14 @@ class InfoURLCollector(InfoCollector):
                 if obj and obj.parsedstring:
                     if hasattr(obj, 'getdirectives') and hasattr(obj,'geturls'):
                         for directive in obj.getdirectives():
-                            urls = obj.geturls([directive])
+                            urls = obj.geturls([directive]) 
+                            if not urls:
+                                urls = []
                             for url in urls:
                                 findings.append(Finding(obj.headerkey, FindingType.INFO_URL, str(url), FindingSeverity.NONE, directive, str(url) ))
             except:
+                import traceback
+                print traceback.format_exc()
                 pass
             
         return findings
