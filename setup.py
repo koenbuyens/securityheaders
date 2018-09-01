@@ -1,8 +1,8 @@
 from setuptools import setup
 
-setup(name='securityheaderscheckers',
-      version='0.2',
-      description='Python script to check for security headers',
+setup(name='advancedsecurityheaders',
+      version='0.3',
+      description='Python script to check for incorrectly configured security headers.',
       url='http://github.com/koenbuyens/securityheaders',
       author='Koen Buyens',
       author_email='koen@buyens.org',
