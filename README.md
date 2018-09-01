@@ -72,7 +72,8 @@ In summary, the script implements the checks identified by
 
 
 # Installation and Execution
-Make sure you have [Python 2](https://www.python.org/downloads/) installed.
+Make sure you have [Python 2](https://www.python.org/downloads/) or [Python 3](https://www.python.org/downloads/) installed.
+The current limitation of Python 3 is that the 'ScriptSrc'-style tags of the Content-Security-Policy are not analyzed.
 
 Install the dependencies:
 ```bash
