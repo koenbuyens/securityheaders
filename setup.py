@@ -15,5 +15,8 @@ setup(name='securityheaderscheckers',
       install_requires=[
           'enum34',
           'ipaddress',
-          'tabulate'
+          'tabulate',
+          'anytree',
+          'argcomplete',
+          'six'
       ])
