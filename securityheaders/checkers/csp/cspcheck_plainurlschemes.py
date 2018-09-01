@@ -1,6 +1,6 @@
 from securityheaders.checkers import Finding, FindingType, FindingSeverity
-from cspcheck import CSPCheck
 from securityheaders import Util
+from .cspcheck import CSPCheck
 
 class CSPCheckPlainUrlSchemes(CSPCheck):
     

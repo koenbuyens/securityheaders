@@ -1,5 +1,6 @@
-from checker import ExpectCTChecker
 from securityheaders.checkers import Finding, FindingType, FindingSeverity
+
+from .checker import ExpectCTChecker
 
 class ExpectCTHTTPReportURIChecker(ExpectCTChecker):
     

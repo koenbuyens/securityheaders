@@ -13,6 +13,6 @@ class ClearSiteData(SecurityHeader):
     
     def methods(self):
         if self.parsedstring:
-            return self.parsedstring.keys()
+            return self.keys()
         return []
 

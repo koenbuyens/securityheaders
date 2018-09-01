@@ -1,23 +1,29 @@
-import httplib
+try:
+    import httplib
+    from urlparse import urlparse
+except ModuleNotFoundError:
+    import http.client as httplib
+    from urllib.parse import urlparse #python3
+
 import socket
 import ssl
 import random
+from functools import partial
+from anytree import ContStyle, RenderTree     
 
-from urlparse import urlparse, urlunparse
-
-from checkers import HeaderEvaluator, CheckerFactory, Finding, FindingSeverity, FindingType
-from models import ModelFactory
-from securityheaders.formatters import FindingFormatterFactory
-from optionparser import OptionParser
 try:
     from multiprocessing import Pool, freeze_support
 except ImportError:
     Pool = None
-from anytree import ContStyle, RenderTree     
+
+from .checkers import HeaderEvaluator, CheckerFactory, Finding, FindingSeverity, FindingType
+from .models import ModelFactory
+
+from securityheaders.formatters import FindingFormatterFactory
+from .optionparser import OptionParser
 
 
 
-from functools import partial
 
 def _pickle_method(method):
     func_name = method.im_func.__name__
@@ -38,7 +44,11 @@ def _unpickle_method(func_name, obj, cls):
             break
     return func.__get__(obj, cls)
 
-import copy_reg
+try: 
+    import copy_reg
+except ModuleNotFoundError:
+    import copyreg as copy_reg
+
 import types
 copy_reg.pickle(types.MethodType, _pickle_method, _unpickle_method)
                                   
@@ -218,5 +228,5 @@ class SecurityHeaders(object):
                 finding.urlid = urlid
             
             return result
-        except Exception, e:
+        except Exception as e:
             return [Finding(None, FindingType.ERROR, str(e), FindingSeverity.ERROR, None, None,url , urlid)]

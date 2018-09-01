@@ -1,6 +1,6 @@
 from securityheaders.models import SecurityHeader
-from accesscontrolalloworigindirective import AccessControlAllowOriginDirective
 from securityheaders.models.annotations import *
+from .accesscontrolalloworigindirective import AccessControlAllowOriginDirective
 
 @description('TODO')
 @headername('access-control-allow-origin')
@@ -12,9 +12,7 @@ class AccessControlAllowOrigin(SecurityHeader):
         SecurityHeader.__init__(self, unparsedstring, AccessControlAllowOriginDirective)
 
     def origins(self):
-        if self.parsedstring:
-            return self.parsedstring.keys()
-        return []
+        return self.keys()
 
     def isstar(self):
         return self.origins() and self.origins()[0] is AccessControlAllowOriginDirective.STAR

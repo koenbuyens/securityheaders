@@ -1,5 +1,5 @@
-from checkerro import CSPReportOnlyChecker
-from cspcheck_unsafeeval import CSPCheckUnsafeEval
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_unsafeeval import CSPCheckUnsafeEval
 
 class CSPReportOnlyUnsafeEvalChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()): 

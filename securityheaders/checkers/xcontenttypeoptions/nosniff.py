@@ -1,6 +1,6 @@
 from securityheaders.checkers import Finding, FindingSeverity, FindingType
 from securityheaders.models import XContentTypeOptions
-from checker import XContentTypeOptionsChecker
+from .checker import XContentTypeOptionsChecker
 
 class XContentTypeOptionsNoSniffChecker(XContentTypeOptionsChecker):
     def check(self, headers, opt_options=dict()):

@@ -17,7 +17,7 @@ class FeaturePolicy(SecurityHeader):
         directiveNames = []
         result = []
         if self.parsedstring:
-            directiveNames = self.parsedstring.keys()
+            directiveNames = self.keys()
         if directives:
             directiveNames = directives
         for directive in directiveNames:
@@ -27,11 +27,6 @@ class FeaturePolicy(SecurityHeader):
                 if not FeaturePolicyKeyword.isKeyword(directiveValue) and not FeaturePolicyKeyword.isValue(directiveValue):
                     result.append(directiveValue)
         return result 
-
-    def getdirectives(self):
-        if self.parsedstring:
-            return self.parsedstring.keys()
-        return []  
 
     def getEffectiveDirectives(self):
         return self.getEffectiveFeaturePolicy().getdirectives()
@@ -44,7 +39,7 @@ class FeaturePolicy(SecurityHeader):
         effectivePolicy.parsedstring = copy.deepcopy(self.parsedstring)
 
         for directive in FeaturePolicyDirective:
-            if directive not in effectivePolicy.parsedstring.keys():
+            if directive not in effectivePolicy.keys():
                 effectivePolicy.parsedstring[directive] = [directive.getDefaultValue()]
 
         return effectivePolicy
@@ -55,5 +50,5 @@ class FeaturePolicy(SecurityHeader):
             if isinstance(directive, str):
                 directive = FeaturePolicyDirective[directive]
             return self.getEffectiveFeaturePolicy()[directive]
-        except Exception, e:
+        except Exception:
             return []

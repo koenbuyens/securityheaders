@@ -1,4 +1,4 @@
-from expectctdirective import ExpectCTDirective
-from expectct import ExpectCT
+from .expectctdirective import ExpectCTDirective
+from .expectct import ExpectCT
 
 __all__ = ['ExpectCTDirective','ExpectCT']

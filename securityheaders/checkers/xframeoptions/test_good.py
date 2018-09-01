@@ -7,28 +7,28 @@ class XFrameOptionsCheckerTest(unittest.TestCase):
 
     def test_checkNoCSP(self):
         xempty = dict()
-        self.assertEquals(self.x.check(xempty), [])
+        self.assertEqual(self.x.check(xempty), [])
 
     def test_checkNone(self):
         xnone = None
-        self.assertEquals(self.x.check(xnone), [])
+        self.assertEqual(self.x.check(xnone), [])
 
     def test_Good(self):
         xhas = dict()
         xhas['x-frame-options'] = 'deny'
-        self.assertEquals(self.x.check(xhas), [])
+        self.assertEqual(self.x.check(xhas), [])
 
     def test_Bad(self):
         xhasbad = dict()
         xhasbad['x-frame-options'] = 'allow-from google.com'
         result = self.x.check(xhasbad)
         self.assertIsNotNone(result)
-        self.assertEquals(len(result), 1)
+        self.assertEqual(len(result), 1)
 
     def test_None(self):
         xhasNone = dict()
         xhasNone['x-frame-options'] = None
-        self.assertEquals(self.x.check(xhasNone), [])
+        self.assertEqual(self.x.check(xhasNone), [])
 
 
 if __name__ == '__main__':

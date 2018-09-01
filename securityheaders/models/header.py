@@ -1,4 +1,5 @@
 from securityheaders import Util
+import six
 
 class Parser(object):
     def __init__(self, directiveclass, directivekeyword = None):
@@ -18,11 +19,11 @@ class Parser(object):
                     directiveParts = directiveToken.split(separator)
                 else:
                     directiveParts = directiveToken.split()
-                if isinstance(directiveParts, list) and not isinstance(directiveParts, (str, unicode)) and len(directiveParts) > 0:
+                if isinstance(directiveParts, list) and not isinstance(directiveParts, six.string_types) and len(directiveParts) > 0:
                     directiveName = directiveParts[0].lower().strip()
                     try:
                         directive = self.directiveclass(directiveName)
-                    except ValueError, e:
+                    except ValueError:
                         directive = directiveName #koen: parser erorr, unknown directive; should be a finding
                     result[directive] = []
                     for directiveValue in directiveParts[1:]:
@@ -68,7 +69,7 @@ class Header(object):
 
     def keys(self):
         if self.parsedstring and hasattr(self.parsedstring, 'keys'):
-            return self.parsedstring.keys()
+            return list(self.parsedstring.keys())
         return []
 
     def directives(self):

@@ -1,3 +1,3 @@
-from present import ServerPresentChecker
+from .present import ServerPresentChecker
 
 __all__ = ['ServerPresentChecker']

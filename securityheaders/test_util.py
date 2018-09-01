@@ -1,5 +1,9 @@
 import unittest
-from urlparse import urlparse
+try:
+    from urlparse import urlparse
+except ModuleNotFoundError:
+    from urllib.parse import urlparse #python3
+
 from securityheaders import Util
 
 class UtilTest(unittest.TestCase):
@@ -30,13 +34,13 @@ class UtilTest(unittest.TestCase):
         '//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'
 
         ]
-        self.assertEquals(Util.matchWildcardUrls('https://*.vk.com', urls), None)
-        self.assertEquals(Util.matchWildcardUrls('https://ajax.googleapis.com', urls), urlparse('//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'))
-        self.assertEquals(Util.matchWildcardUrls('https://*.googleapis.com', urls), urlparse('//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'))
-        self.assertEquals(Util.matchWildcardUrls(None, urls), None)
-        self.assertEquals(Util.matchWildcardUrls('https://*.googleapis.com', None), None)
-        self.assertEquals(Util.matchWildcardUrls('https://*.googleapis.com', []), None)
-#        self.assertEquals(Util.matchWildcardUrls('*.googleapis.com', urls), urlparse('//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'))
+        self.assertEqual(Util.matchWildcardUrls('https://*.vk.com', urls), None)
+        self.assertEqual(Util.matchWildcardUrls('https://ajax.googleapis.com', urls), urlparse('//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'))
+        self.assertEqual(Util.matchWildcardUrls('https://*.googleapis.com', urls), urlparse('//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'))
+        self.assertEqual(Util.matchWildcardUrls(None, urls), None)
+        self.assertEqual(Util.matchWildcardUrls('https://*.googleapis.com', None), None)
+        self.assertEqual(Util.matchWildcardUrls('https://*.googleapis.com', []), None)
+#        self.assertEqual(Util.matchWildcardUrls('*.googleapis.com', urls), urlparse('//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'))
 
 
 if __name__ == '__main__':

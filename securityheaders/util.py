@@ -1,4 +1,8 @@
-from urlparse import urlparse
+try:
+    from urlparse import urlparse
+except ModuleNotFoundError:
+    from urllib.parse import urlparse #python3
+
 import re
 import os
 import pkgutil

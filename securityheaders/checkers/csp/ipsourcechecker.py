@@ -1,6 +1,5 @@
-from checker import CSPChecker
-
-from cspcheck_ipsource import CSPCheckIPSource
+from .checker import CSPChecker
+from .cspcheck_ipsource import CSPCheckIPSource
 
 class CSPIPSourceChecker(CSPChecker):
     def check(self, headers, opt_options=dict()):

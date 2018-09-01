@@ -1,5 +1,5 @@
-from checkerro import CSPReportOnlyChecker
-from cspcheck_plainurlschemes import CSPCheckPlainUrlSchemes
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_plainurlschemes import CSPCheckPlainUrlSchemes
 
 class CSPReportOnlyPlainUrlSchemesChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()): 

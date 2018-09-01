@@ -10,7 +10,7 @@ class FeaturePolicyTest(unittest.TestCase):
         geo = self.fpcomplex.getEffectiveValues(FeaturePolicyDirective.GEOLOCATION)
         self.assertTrue(FeaturePolicyKeyword.SELF in geo)
         self.assertTrue("https://example.com" in geo)
-        self.assertEquals(len(geo), 2)
+        self.assertEqual(len(geo), 2)
 
 
 if __name__ == '__main__':

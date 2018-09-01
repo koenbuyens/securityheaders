@@ -1,6 +1,5 @@
-from securityheaders.models.csp import CSPReportOnly
-from checkerro import CSPReportOnlyChecker
-from cspcheck_noncelength import CSPCheckNonceLength
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_noncelength import CSPCheckNonceLength
 
 class CSPReportOnlyNonceLengthChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()):

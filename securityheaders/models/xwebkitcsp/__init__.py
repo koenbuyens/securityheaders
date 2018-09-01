@@ -1,3 +1,3 @@
-from xwebkitcsp import XWebKitCSP
+from .xwebkitcsp import XWebKitCSP
 
 __all__ = ['XWebKitCSP']

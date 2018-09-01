@@ -1,5 +1,5 @@
-from checker import CSPChecker
-from cspcheck_wildcard import CSPCheckWildCard
+from .checker import CSPChecker
+from .cspcheck_wildcard import CSPCheckWildCard
 
 
 class CSPWildCardChecker(CSPChecker):

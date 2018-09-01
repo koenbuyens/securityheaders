@@ -1,6 +1,5 @@
-from securityheaders import Util
-from checker import CSPChecker
-from cspcheck_flash import CSPCheckFlash
+from .checker import CSPChecker
+from .cspcheck_flash import CSPCheckFlash
 
 class CSPFlashObjectWhitelistBypassChecker(CSPChecker):
 

@@ -1,6 +1,6 @@
 from securityheaders.models import SecurityHeader
-from accesscontrolallowmethodsdirective import AccessControlAllowMethodsDirective
 from securityheaders.models.annotations import *
+from .accesscontrolallowmethodsdirective import AccessControlAllowMethodsDirective
 
 @description('TODO')
 @headername('access-control-allow-methods')
@@ -13,5 +13,5 @@ class AccessControlAllowMethods(SecurityHeader):
 
     def methods(self):
         if self.parsedstring:
-            return self.parsedstring.keys()
+            return self.keys()
         return []

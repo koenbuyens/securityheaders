@@ -1,3 +1,3 @@
-from xpoweredby import XPoweredBy
+from .xpoweredby import XPoweredBy
 
 __all__ = ['XPoweredBy']

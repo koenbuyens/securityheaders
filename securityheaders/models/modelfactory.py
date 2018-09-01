@@ -36,10 +36,10 @@ class ModelFactory(Singleton):
 
 
     def populate(self):
-        path = securityheaders.models.__path__[0]
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            Util.load_all_modules_from_dir(path)
+#        path = securityheaders.models.__path__[0]
+#        with warnings.catch_warnings():
+#            warnings.simplefilter("ignore")
+#            Util.load_all_modules_from_dir(path)
         clazzes = list(Util.inheritors(Header))
         clazzes.extend(Util.inheritors(Directive))
         clazzes.extend(Util.inheritors(Keyword))

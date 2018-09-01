@@ -6,7 +6,7 @@ class Directive(Enum):
     def __new__(cls, *values):
         obj = object.__new__(cls)
         # first value is canonical value
-        obj._value_ = values[1]
+        obj._value_ = values[1].lower()
         for other_value in values[1:]:
             cls._value2member_map_[other_value.lower()] = obj
         obj._all_values = values
@@ -17,7 +17,6 @@ class Directive(Enum):
 
     def endswith(self, value):
         return str(self).endswith(value)
-
 
     def startswith(self, value):
         return str(self).startswith(value)
@@ -34,6 +33,10 @@ class Directive(Enum):
         return str(self).find(value) 
 
     @classmethod
+    def keys(cls):
+        return cls._value2member_map_.keys()
+
+    @classmethod
     def directiveseperator(cls):
         return ';'
 
@@ -48,4 +51,7 @@ class Directive(Enum):
 
     @classmethod
     def isDirective(cls):
+        pass
+
+    def getDefaultValue(self):
         pass

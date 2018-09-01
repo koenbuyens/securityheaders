@@ -1,7 +1,9 @@
-from securityheaders.checkers import Finding, FindingType, FindingSeverity
-from cspcheck import CSPCheck
-from securityheaders import Util
 import re
+
+from securityheaders.checkers import Finding, FindingType, FindingSeverity
+from securityheaders import Util
+from .cspcheck import CSPCheck
+
 
 class CSPCheckNonceLength(CSPCheck):
     def __init__(self, csp, function):

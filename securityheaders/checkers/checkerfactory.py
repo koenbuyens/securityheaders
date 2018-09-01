@@ -64,15 +64,15 @@ class CheckerFactory(Singleton):
             subclasses = [sub for sub in parent.clazz.__subclasses__()   if parent.clazz in sub.__bases__]
             subclasses = [sub for sub in subclasses if sub in clazzes.values()]
             for child in subclasses:
-	        childpath = "/".join([f.name for f in parent.path]) + "/" + child.__name__
-	        found = False
-	        for c in parent.children:
-	            if childpath == "/".join([f.name for f in c.path]):
-	                found = True
-	        if not found:
-	            childnode = Node(child.__name__, parent)
-	            setattr(childnode,"clazz", child)
-	            worklist.append(childnode)
+                childpath = "/".join([f.name for f in parent.path]) + "/" + child.__name__
+                found = False
+                for c in parent.children:
+                    if childpath == "/".join([f.name for f in c.path]):
+                        found = True
+                if not found:
+                    childnode = Node(child.__name__, parent)
+                    setattr(childnode,"clazz", child)
+                    worklist.append(childnode)
                 
         return root
                           

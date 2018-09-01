@@ -1,5 +1,5 @@
-from checker import CSPChecker
-from checkerro import CSPReportOnlyChecker
+from .checker import CSPChecker
+from .checkerro import CSPReportOnlyChecker
 from securityheaders.checkers import Finding,FindingType,FindingSeverity
 
 class CSPReportOnlyNoCSPChecker(CSPReportOnlyChecker, CSPChecker):

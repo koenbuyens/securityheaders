@@ -1,5 +1,5 @@
-from checker import CSPChecker
-from cspcheck_plainurlschemes import CSPCheckPlainUrlSchemes
+from .checker import CSPChecker
+from .cspcheck_plainurlschemes import CSPCheckPlainUrlSchemes
 
 class CSPPlainUrlSchemesChecker(CSPChecker):
     def check(self, headers, opt_options=dict()): 

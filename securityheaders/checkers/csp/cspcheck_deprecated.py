@@ -1,5 +1,5 @@
 from securityheaders.checkers import Finding, FindingType, FindingSeverity
-from cspcheck import CSPCheck
+from .cspcheck import CSPCheck
 
 class CSPCheckDeprecated(CSPCheck):
     

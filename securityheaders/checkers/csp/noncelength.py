@@ -1,5 +1,5 @@
-from checker import CSPChecker
-from cspcheck_noncelength import CSPCheckNonceLength
+from .checker import CSPChecker
+from .cspcheck_noncelength import CSPCheckNonceLength
 
 class CSPNonceLengthChecker(CSPChecker):
     def check(self, headers, opt_options=dict()):

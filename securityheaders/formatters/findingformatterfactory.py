@@ -174,10 +174,10 @@ class FindingFormatterFactory(Singleton):
         return self.getnames()
 
     def populate(self):
-        path = securityheaders.formatters.__path__[0]
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            Util.load_all_modules_from_dir(path)
+        #path = securityheaders.formatters.__path__[0]
+        #with warnings.catch_warnings():
+        #    warnings.simplefilter("ignore")
+        #    Util.load_all_modules_from_dir(path)
         clazzes = list(Util.inheritors(FindingFormatter))
         all_my_base_classes = {cls: cls for cls in clazzes}
         for clazz in all_my_base_classes:

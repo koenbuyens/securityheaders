@@ -6,11 +6,13 @@ ones implemented by https://github.com/google/csp-evaluator and securityheaders.
 Run the script with python securityheaders.py -h for more information
 """
 import argparse, argcomplete
-import ConfigParser
 import sys
 import errno
 
-from urlparse import urlparse
+try:
+    from urlparse import urlparse
+except ModuleNotFoundError:
+    from urllib.parse import urlparse #python3
 from securityheaders import SecurityHeaders, FindingSeverity
 
 
@@ -137,7 +139,7 @@ def main(args=sys.argv[1:],output=sys):
 
     try:
         api.load_options_from_file(args.config)
-    except Exception, error:
+    except Exception as error:
         sys.stderr.write('\033[91m' + str(error) + '\033[0m' + "\n")
 
     for key, value in vars(args).items():

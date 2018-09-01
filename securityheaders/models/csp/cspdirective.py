@@ -49,4 +49,4 @@ class CSPDirective(Directive):
         """
         if isinstance(directive, CSPDirective):
             return True
-        return any(directive.lower() == item.value.lower() for item in list(cls))
+        return any(directive.lower() == item for item in list(cls.keys()))

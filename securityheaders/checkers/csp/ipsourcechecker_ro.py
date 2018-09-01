@@ -1,5 +1,5 @@
-from checkerro import CSPReportOnlyChecker
-from cspcheck_ipsource import CSPCheckIPSource
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_ipsource import CSPCheckIPSource
 
 class CSPReportOnlyIPSourceChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()):

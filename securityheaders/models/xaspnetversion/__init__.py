@@ -1,3 +1,3 @@
-from xaspnetversion import XAspnetVersion
+from .xaspnetversion import XAspnetVersion
 
 __all__ = ['XAspnetVersion']

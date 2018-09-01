@@ -1,5 +1,5 @@
-from checker import CSPChecker
-from cspcheck_missingdirective import CSPCheckMissingDirective
+from .checker import CSPChecker
+from .cspcheck_missingdirective import CSPCheckMissingDirective
 
 class CSPMissingDirectiveChecker(CSPChecker):
     def check(self, headers, opt_options=dict()): 

@@ -1,6 +1,7 @@
-from checker import ExpectCTChecker
 from securityheaders.models import ExpectCT
 from securityheaders.checkers import Finding, FindingType, FindingSeverity
+
+from .checker import ExpectCTChecker
 
 class ExpectCTNotEnforcedChecker(ExpectCTChecker):
     

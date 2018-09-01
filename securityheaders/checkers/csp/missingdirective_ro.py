@@ -1,5 +1,5 @@
-from checkerro import CSPReportOnlyChecker
-from cspcheck_missingdirective import CSPCheckMissingDirective
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_missingdirective import CSPCheckMissingDirective
 
 class CSPReportOnlyMissingDirectiveChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()): 

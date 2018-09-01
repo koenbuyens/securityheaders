@@ -1,5 +1,5 @@
-from checker import CSPChecker
-from cspcheck_whitelist import CSPCheckWhitelist
+from .checker import CSPChecker
+from .cspcheck_whitelist import CSPCheckWhitelist
 
 class CSPScriptWhitelistBypassChecker(CSPChecker):
     def myoptions(cls):

@@ -1,5 +1,5 @@
-from checker import CSPChecker
-from cspcheck_srchttp import CSPCheckSrcHttp
+from .checker import CSPChecker
+from .cspcheck_srchttp import CSPCheckSrcHttp
 
 class CSPSCRHTTPChecker(CSPChecker):
     def check(self, headers, opt_options=dict()): 

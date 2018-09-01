@@ -1,5 +1,5 @@
-from checkerro import CSPReportOnlyChecker
-from cspcheck_srchttp import CSPCheckSrcHttp
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_srchttp import CSPCheckSrcHttp
 
 class CSPReportOnlySCRHTTPChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()): 

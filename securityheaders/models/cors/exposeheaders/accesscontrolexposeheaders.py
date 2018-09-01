@@ -1,6 +1,6 @@
 from securityheaders.models import SecurityHeader
-from accesscontrolexposeheadersdirective import AccessControlExposeHeadersDirective
 from securityheaders.models.annotations import *
+from .accesscontrolexposeheadersdirective import AccessControlExposeHeadersDirective
 
 @description('TODO')
 @headername('access-control-expose-headers')
@@ -13,5 +13,5 @@ class AccessControlExposeHeaders(SecurityHeader):
 
     def headers(self):
         if self.parsedstring:
-            return self.parsedstring.keys()
+            return self.keys()
         return []    

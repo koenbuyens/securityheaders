@@ -1,5 +1,5 @@
-from checker import CSPChecker
-from cspcheck_unsafeeval import CSPCheckUnsafeEval
+from .checker import CSPChecker
+from .cspcheck_unsafeeval import CSPCheckUnsafeEval
 
 class CSPUnsafeEvalChecker(CSPChecker):
     def check(self, headers, opt_options=dict()): 

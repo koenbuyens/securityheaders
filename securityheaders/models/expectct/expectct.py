@@ -30,5 +30,5 @@ class ExpectCT(SecurityHeader):
     def maxage(self):
         try:
             return int(self.parsedstring[ExpectCTDirective.MAX_AGE][0])
-        except Exception, e:
+        except Exception:
             return None

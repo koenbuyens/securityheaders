@@ -1,5 +1,5 @@
-from checkerro import CSPReportOnlyChecker
-from cspcheck_whitelist import CSPCheckWhitelist
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_whitelist import CSPCheckWhitelist
 
 class CSPReportOnlyScriptWhitelistBypassChecker(CSPReportOnlyChecker):
     def myoptions(cls):

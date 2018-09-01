@@ -14,7 +14,7 @@ class XPermittedCrossDomainPolicies(SecurityHeader):
     def is_none(self):
         try:
             if self.parsedstring:
-                return XPermittedCrossDomainPoliciesDirective.NONE in self.parsedstring.keys()
+                return XPermittedCrossDomainPoliciesDirective.NONE in self.keys()
             return False
         except:
             pass

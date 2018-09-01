@@ -22,7 +22,7 @@ class SetCookie(Header):
     def maxage(self):
         try:
             return int(self.parsedstring[SetCookieDirective.MAX_AGE][0])
-        except Exception, e:
+        except Exception:
             return None
 
     def domain(self):
@@ -68,15 +68,15 @@ class SetCookie(Header):
         result = []
         for directive in directives:
             try:
-	        dirobj = SetCookieDirective(directive)
-	        if dirobj == SetCookieDirective.DOMAIN:
-		    domain = self.domain() if self.domain else ''
-		    path = self.path() if self.path else ''
-		    url = domain + path
-		    if url:
-		        result.append(url)
+                dirobj = SetCookieDirective(directive)
+                if dirobj == SetCookieDirective.DOMAIN:
+                    domain = self.domain() if self.domain else ''
+                    path = self.path() if self.path else ''
+                    url = domain + path
+                    if url:
+                        result.append(url)
             except:
-                pass
+                 pass
         return result
  
 

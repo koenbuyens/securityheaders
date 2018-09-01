@@ -1,6 +1,6 @@
 from securityheaders.models import SecurityHeader
-from accesscontrolallowcredentialsdirective import AccessControlAllowCredentialsDirective
 from securityheaders.models.annotations import *
+from .accesscontrolallowcredentialsdirective import AccessControlAllowCredentialsDirective
 
 @description('TODO')
 @headername('access-control-allow-credentials')
@@ -14,5 +14,5 @@ class AccessControlAllowCredentials(SecurityHeader):
 
     def value(self):
         if self.parsedstring and len(self.parsedstring) > 0:
-            return self.parsedstring.keys()[0]
+            return self.keys()[0]
         return None

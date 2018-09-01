@@ -1,5 +1,10 @@
-import ConfigParser
-from ConfigParser import NoOptionError
+try:
+    import ConfigParser
+    from ConfigParser import NoOptionError
+except ModuleNotFoundError:
+    import configparser
+    from configparser import NoOptionError
+
 from distutils.util import strtobool
 
 class OptionParser(object):
@@ -77,7 +82,7 @@ class OptionParser(object):
                         fname = value.split('file://',1)[1]
                         with open(fname, 'r') as f:
                             value = f.read().splitlines()
-                    except IOError, e:
+                    except IOError as e:
                         result['errors'].append(str(e))
                 result[checker][option] = value 
 

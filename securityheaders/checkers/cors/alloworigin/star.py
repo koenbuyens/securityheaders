@@ -1,6 +1,6 @@
 from securityheaders.models.cors import AccessControlAllowOriginDirective, AccessControlAllowOrigin
 from securityheaders.checkers import Finding, FindingType, FindingSeverity
-from checker import AccessControlAllowOriginChecker
+from .checker import AccessControlAllowOriginChecker
 
 class AccessControlAllowOriginStarChecker(AccessControlAllowOriginChecker):
     def check(self, headers, opt_options=dict()):

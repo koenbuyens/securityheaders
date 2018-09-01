@@ -183,7 +183,7 @@ class CSP(SecurityHeader):
         directiveNames = []
         result = []
         if self.parsedstring:
-            directiveNames = self.parsedstring.keys()
+            directiveNames = self.keys()
         if directives:
             directiveNames = directives
         for directive in directiveNames:

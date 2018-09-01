@@ -1,3 +1,3 @@
-from xaspnetmvcversion import XAspnetMvcVersion
+from .xaspnetmvcversion import XAspnetMvcVersion
 
 __all__ = ['XAspnetMvcVersion']

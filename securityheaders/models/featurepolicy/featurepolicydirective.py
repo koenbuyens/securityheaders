@@ -1,5 +1,5 @@
 from securityheaders.models import Directive
-from featurepolicykeyword import FeaturePolicyKeyword
+from .featurepolicykeyword import FeaturePolicyKeyword
 
 class FeaturePolicyDirective(Directive):
 

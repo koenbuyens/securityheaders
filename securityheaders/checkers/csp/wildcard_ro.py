@@ -1,5 +1,5 @@
-from checkerro import CSPReportOnlyChecker
-from cspcheck_wildcard import CSPCheckWildCard
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_wildcard import CSPCheckWildCard
 
 class CSPReportOnlyWildCardChecker(CSPReportOnlyChecker):
     def check(self, headers, opt_options=dict()): 

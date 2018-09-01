@@ -1,6 +1,5 @@
-from securityheaders import Util
-from checkerro import CSPReportOnlyChecker
-from cspcheck_flash import CSPCheckFlash
+from .checkerro import CSPReportOnlyChecker
+from .cspcheck_flash import CSPCheckFlash
 
 class CSPReportOnlyFlashObjectWhitelistBypassChecker(CSPReportOnlyChecker):
 

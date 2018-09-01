@@ -13,6 +13,6 @@ class XDownloadOptions(SecurityHeader):
     
     def noopen(self):
         if self.parsedstring:
-            return XDownloadOptionsDirective.NOOPEN in self.parsedstring.keys()
+            return XDownloadOptionsDirective.NOOPEN in self.keys()
         return []
 

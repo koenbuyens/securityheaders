@@ -1,1 +1,3 @@
-from present import XPoweredByPresentChecker
+from .present import XPoweredByPresentChecker
+
+__all__ = ['XPoweredByPresentChecker']

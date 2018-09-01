@@ -1,12 +1,14 @@
-from util import Util
+from .util import Util
 
-import checkers
-import models
+from . import checkers
+from . import models
+from . import singleton
+
 import pkgutil
 import inspect
-import singleton
 
-from securityheader import SecurityHeaders
+
+from .securityheader import SecurityHeaders
 from securityheaders.checkers import FindingSeverity, CheckerFactory
 from securityheaders.models import *
 from securityheaders.formatters import *

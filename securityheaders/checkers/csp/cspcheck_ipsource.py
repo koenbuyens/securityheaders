@@ -1,8 +1,12 @@
 from securityheaders.checkers import Finding, FindingType, FindingSeverity
-from cspcheck import CSPCheck
 from securityheaders import Util
+from .cspcheck import CSPCheck
 
-from urlparse import urlparse
+try:
+    from urlparse import urlparse
+except ModuleNotFoundError:
+    from urllib.parse import urlparse #python3
+
 import ipaddress
 
 class CSPCheckIPSource(CSPCheck):

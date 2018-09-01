@@ -1,6 +1,7 @@
-from checker import XFrameOptionsChecker
 from securityheaders.checkers import FindingSeverity, Finding, FindingType
 from securityheaders.models import XFrameOptions
+
+from .checker import XFrameOptionsChecker
 
 class XFrameOptionsNotAllowFromChecker(XFrameOptionsChecker):
     def check(self, headers, opt_options=dict()):
