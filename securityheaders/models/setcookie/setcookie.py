@@ -80,3 +80,16 @@ class SetCookie(Header):
         return result
  
 
+    def name(self):
+        for key in self.keys():
+            if not SetCookieDirective.isDirective(key):
+                return key
+        return None
+
+    def value(self):
+        try:
+            return self.parsedstring[self.name()][0]
+        except IndexError:
+            return "" #there is a key, but it is empty
+        except KeyError:
+            return None #there is no key

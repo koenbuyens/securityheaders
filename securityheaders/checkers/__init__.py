@@ -35,6 +35,7 @@ from xxssprotection import *
 from other import *
 from expectct import *
 from xpcdp import *
+from setcookie import *
 
 
 import pkgutil
