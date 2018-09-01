@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(name='advancedsecurityheaders',
       version='0.3',
@@ -7,7 +7,7 @@ setup(name='advancedsecurityheaders',
       author='Koen Buyens',
       author_email='koen@buyens.org',
       license='MIT',
-      packages=['securityheaders','securityheaders.checkers','securityheaders.formatters','securityheaders.models'],
+      packages=find_packages(),
       zip_safe=False,
       entry_points = {
         'console_scripts': ['advancedsecurityheaders=securityheaders.command_line:main'],
