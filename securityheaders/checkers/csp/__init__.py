@@ -23,8 +23,10 @@ from .whitelistbypass_ro import CSPReportOnlyScriptWhitelistBypassChecker
 from .wildcard import CSPWildCardChecker
 from .wildcard_ro import CSPReportOnlyWildCardChecker
 from .roonlychecker import CSPReportOnlyNoCSPChecker
+from .framesrc import CSPFrameSrcChecker
+from .framesrc_ro import CSPReportOnlyFrameSrcChecker
 
 import pkgutil
 import inspect
 
-__all__ = ['CSPChecker','CSPReportOnlyChecker','CSPDeprecatedDirectiveChecker','CSPReportOnlyDeprecatedDirectiveChecker','CSPFlashObjectWhitelistBypassChecker','CSPReportOnlyFlashObjectWhitelistBypassChecker','CSPIPSourceChecker','CSPReportOnlyIPSourceChecker','CSPMissingDirectiveChecker','CSPReportOnlyMissingDirectiveChecker','CSPNonceLengthChecker','CSPReportOnlyNonceLengthChecker','CSPPlainUrlSchemesChecker','CSPReportOnlyPlainUrlSchemesChecker','CSPSCRHTTPChecker','CSPReportOnlySCRHTTPChecker','CSPUnsafeEvalChecker','CSPReportOnlyUnsafeEvalChecker','CSPUnsafeInlineChecker','CSPReportOnlyUnsafeInlineChecker','CSPScriptWhitelistBypassChecker','CSPReportOnlyScriptWhitelistBypassChecker','CSPWildCardChecker','CSPReportOnlyWildCardChecker','CSPReportOnlyNoCSPChecker']
+__all__ = ['CSPChecker','CSPReportOnlyChecker','CSPDeprecatedDirectiveChecker','CSPReportOnlyDeprecatedDirectiveChecker','CSPFlashObjectWhitelistBypassChecker','CSPReportOnlyFlashObjectWhitelistBypassChecker','CSPIPSourceChecker','CSPReportOnlyIPSourceChecker','CSPMissingDirectiveChecker','CSPReportOnlyMissingDirectiveChecker','CSPNonceLengthChecker','CSPReportOnlyNonceLengthChecker','CSPPlainUrlSchemesChecker','CSPReportOnlyPlainUrlSchemesChecker','CSPSCRHTTPChecker','CSPReportOnlySCRHTTPChecker','CSPUnsafeEvalChecker','CSPReportOnlyUnsafeEvalChecker','CSPUnsafeInlineChecker','CSPReportOnlyUnsafeInlineChecker','CSPScriptWhitelistBypassChecker','CSPReportOnlyScriptWhitelistBypassChecker','CSPWildCardChecker','CSPReportOnlyWildCardChecker','CSPReportOnlyNoCSPChecker','CSPFrameSrcChecker','CSPReportOnlyFrameSrcChecker']
