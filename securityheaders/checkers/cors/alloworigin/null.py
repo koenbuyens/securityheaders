@@ -6,6 +6,6 @@ class AccessControlAllowOriginNullChecker(AccessControlAllowOriginChecker):
     def check(self, headers, opt_options=dict()):
         origins = self.getorigins(headers)
         if origins and origins.isnull():
-            return [Finding(AccessControlAllowOrigin.headerkey, FindingType.NULL_ORIGIN, str(AccessControlAllowOrigin.headerkey) + " should not be *",FindingSeverity.HIGH, AccessControlAllowOriginDirective, AccessControlAllowOriginDirective.NULL.value)]
+            return [Finding(AccessControlAllowOrigin.headerkey, FindingType.NULL_ORIGIN, str(AccessControlAllowOrigin.headerkey) + " should not be *",FindingSeverity.HIGH, AccessControlAllowOriginDirective.NULL, None)]
         return []
 

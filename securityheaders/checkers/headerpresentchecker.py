@@ -6,5 +6,5 @@ class HeaderPresentChecker(Checker):
            return []
 
         if header in headers.keys():
-            return [Finding(header, FindingType.INFO_DISCLOSURE, header + ' header present. ' + description,FindingSeverity.INFO, header, headers[header])]
+            return [Finding(header, FindingType.INFO_DISCLOSURE, header + ' header present. ' + description,FindingSeverity.INFO, None, headers[header])]
         return []  

@@ -6,5 +6,5 @@ class AccessControlAllowOriginStarChecker(AccessControlAllowOriginChecker):
     def check(self, headers, opt_options=dict()):
         origins = self.getorigins(headers)
         if origins and origins.isstar():
-            return [Finding(AccessControlAllowOrigin.headerkey, FindingType.STAR_ORIGIN, str(AccessControlAllowOrigin.headerkey) + " should not be *",FindingSeverity.HIGH, AccessControlAllowOriginDirective, AccessControlAllowOriginDirective.STAR.value)]
+            return [Finding(AccessControlAllowOrigin.headerkey, FindingType.STAR_ORIGIN, str(AccessControlAllowOrigin.headerkey) + " should not be *",FindingSeverity.HIGH, AccessControlAllowOriginDirective.STAR, None)]
         return []
