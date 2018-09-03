@@ -23,6 +23,7 @@ from .unknowndirectivechecker import UnknownDirectiveChecker
 from .cors.allowcredentials import *
 from .cors.alloworigin import *
 from .cors.maxage import *
+from .cors.exposeheaders import *
 from .csp import *
 from .featurepolicy import *
 from .hsts import *

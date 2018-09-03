@@ -49,6 +49,7 @@ class FindingType(Enum):
     NULL_ORIGIN = 501
     HTTP_ORIGIN = 502
     MAX_AGE_TOO_LONG = 503
+    SENSITIVE_HEADER_EXPOSED = 504
 
     #XXSSProtection
     DISABLE_XSS_FILTER = 600

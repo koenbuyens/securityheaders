@@ -1,5 +1,7 @@
 from securityheaders.models.cors import CORSDirective
+from securityheaders.models.annotations import *
 
+@anydirective
 class AccessControlAllowHeadersDirective(CORSDirective):
 
     @classmethod

@@ -1,6 +1,7 @@
 from .allowcredentials import *
 from .alloworigin import *
 from .maxage import *
+from .exposeheaders import *
 
 import pkgutil
 import inspect
