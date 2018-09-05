@@ -10,7 +10,7 @@ class HSTSMaxAgeZeroChecker(HSTSChecker):
         if not hsts:
             return findings
         if hsts.maxAge() == 0:
-            return [Finding(HSTS.headerkey, FindingType.MAX_AGE_ZERO, 'CORS is disabled due to max age equal to zero.', FindingSeverity.LOW, HSTS.directive.MAX_AGE)]
+            return [Finding(HSTS.headerkey, FindingType.MAX_AGE_ZERO, str(HSTS.headerkey) + ' is disabled due to max age equal to zero.', FindingSeverity.LOW, HSTS.directive.MAX_AGE)]
 
         return findings
 
