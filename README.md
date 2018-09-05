@@ -602,7 +602,7 @@ The following pages were helpful in understanding the different security headers
 
 # TODOs
 - TODOs in the above README including References
-- Checkers for Set-Cookie, Cache-Control
+- Checkers for Cache-Control
 - Decent analysis of what is a good feature policy
 - Configurable ratings
 - Good descriptions, including references to CWE, OWASP cheat sheets and secure headers project.
