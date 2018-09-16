@@ -43,6 +43,13 @@ class CSPScriptWhitelistCDNBypassCheckerTest(unittest.TestCase):
        self.assertIsNotNone(result)
        self.assertEqual(self.x.check(hasx), [])
 
+    def test_ValidCSP3(self):
+       hasx = dict()
+       hasx['content-security-policy'] = "default-src 'none'; script-src https://afxcdn.net/myverylongscript.js"
+       result = self.x.check(hasx)
+       self.assertIsNotNone(result)
+       self.assertEqual(self.x.check(hasx), [])
+
     def test_IncludeWholeCDN(self):
        hasx5 = dict()
        hasx5['content-security-policy'] = "default-src 'none'; script-src https://gstatic.com"
