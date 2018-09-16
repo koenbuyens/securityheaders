@@ -91,7 +91,10 @@ class Util(object):
         """
         if not url or not listOfUrls:
             return None
-        cspUrl = urlparse(str(url))
+        pattern = re.compile('^[a-zA-Z][+a-zA-Z0-9.-]*:.*')
+        if not pattern.search(str(url)) and not url.startswith('//'):
+            url = '//' + url
+        cspUrl = urlparse(str(url))            
         host = cspUrl.netloc.lower() or ""
         hostHasWildcard = host.startswith("*.")
         wildcardFreeHost = re.sub("^\*", "", host, flags=re.IGNORECASE)
@@ -100,13 +103,27 @@ class Util(object):
 
         for url2 in listOfUrls:
             url = urlparse(str(url2))
-            domain = url.netloc
-            if (not domain.endswith(wildcardFreeHost)): 
-                continue
-            
-            if (not hostHasWildcard and host != domain):
-                continue
-
+            domain = url.netloc.lower() or ""
+            domainHasWildCard =  domain.startswith("*.")
+            if (not domainHasWildCard):
+                if (not domain.endswith(wildcardFreeHost) ): 
+                    continue
+                if (not hostHasWildcard and host != domain):
+                    continue
+            else:
+                domainparts = list(reversed(domain.split('.')))
+                hostparts = list(reversed(host.split('.')))
+                stop = False
+                domainlen = len(domain.split('.'))
+                hostlen = len(host.split('.'))
+                
+                for idx, domainpart in enumerate(domainparts):
+                    if idx < hostlen:
+                        hostpart = hostparts[idx]
+                        if hostpart != domainpart and (domainpart != '*' and hostpart != '*'):
+                            stop = True
+                if stop:
+                    continue
             if (hasPath):
                 if (path.endswith('/')): 
                     if (not url.path.startswith(path)):

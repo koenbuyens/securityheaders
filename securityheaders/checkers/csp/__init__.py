@@ -26,8 +26,10 @@ from .roonlychecker import CSPReportOnlyNoCSPChecker
 from .frameancestors import CSPFrameAncestorsChecker
 from .frameancestors_ro import CSPReportOnlyFrameAncestorsChecker
 from .cspxframeopts import CSPXFrameOptionsInconsistentChecker
+from .whitelistbypasscdn import CSPScriptWhitelistCDNBypassChecker
+from .whitelistbypasscdn_ro import CSPReportOnlyScriptWhitelistCDNBypassChecker
 
 import pkgutil
 import inspect
 
-__all__ = ['CSPChecker','CSPReportOnlyChecker','CSPDeprecatedDirectiveChecker','CSPReportOnlyDeprecatedDirectiveChecker','CSPXFrameOptionsInconsistentChecker','CSPFlashObjectWhitelistBypassChecker','CSPReportOnlyFlashObjectWhitelistBypassChecker','CSPIPSourceChecker','CSPReportOnlyIPSourceChecker','CSPMissingDirectiveChecker','CSPReportOnlyMissingDirectiveChecker','CSPNonceLengthChecker','CSPReportOnlyNonceLengthChecker','CSPPlainUrlSchemesChecker','CSPReportOnlyPlainUrlSchemesChecker','CSPSCRHTTPChecker','CSPReportOnlySCRHTTPChecker','CSPUnsafeEvalChecker','CSPReportOnlyUnsafeEvalChecker','CSPUnsafeInlineChecker','CSPReportOnlyUnsafeInlineChecker','CSPScriptWhitelistBypassChecker','CSPReportOnlyScriptWhitelistBypassChecker','CSPWildCardChecker','CSPReportOnlyWildCardChecker','CSPReportOnlyNoCSPChecker','CSPFrameAncestorsChecker','CSPReportOnlyFrameAncestorsChecker']
+__all__ = ['CSPChecker','CSPReportOnlyChecker','CSPDeprecatedDirectiveChecker','CSPReportOnlyDeprecatedDirectiveChecker','CSPXFrameOptionsInconsistentChecker','CSPFlashObjectWhitelistBypassChecker','CSPReportOnlyFlashObjectWhitelistBypassChecker','CSPIPSourceChecker','CSPReportOnlyIPSourceChecker','CSPMissingDirectiveChecker','CSPReportOnlyMissingDirectiveChecker','CSPNonceLengthChecker','CSPReportOnlyNonceLengthChecker','CSPPlainUrlSchemesChecker','CSPReportOnlyPlainUrlSchemesChecker','CSPSCRHTTPChecker','CSPReportOnlySCRHTTPChecker','CSPUnsafeEvalChecker','CSPReportOnlyUnsafeEvalChecker','CSPUnsafeInlineChecker','CSPReportOnlyUnsafeInlineChecker','CSPScriptWhitelistBypassChecker','CSPReportOnlyScriptWhitelistBypassChecker','CSPWildCardChecker','CSPReportOnlyWildCardChecker','CSPReportOnlyNoCSPChecker','CSPFrameAncestorsChecker','CSPReportOnlyFrameAncestorsChecker','CSPScriptWhitelistCDNBypassChecker','CSPReportOnlyScriptWhitelistCDNBypassChecker']

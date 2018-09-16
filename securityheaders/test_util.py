@@ -40,7 +40,7 @@ class UtilTest(unittest.TestCase):
         self.assertEqual(Util.matchWildcardUrls(None, urls), None)
         self.assertEqual(Util.matchWildcardUrls('https://*.googleapis.com', None), None)
         self.assertEqual(Util.matchWildcardUrls('https://*.googleapis.com', []), None)
-#        self.assertEqual(Util.matchWildcardUrls('*.googleapis.com', urls), urlparse('//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'))
+        self.assertEqual(Util.matchWildcardUrls('*.googleapis.com', urls), urlparse('//ajax.googleapis.com/ajax/libs/yui/2.8.0r4/build/charts/assets/charts.swf'))
 
 
 if __name__ == '__main__':
