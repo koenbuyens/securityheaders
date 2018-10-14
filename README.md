@@ -189,6 +189,32 @@ If the file is a CSV file, tell the column with URLs with the `--urlcolumn` flag
 python securityheaders.py majestic_10.csv --startrow 2 --urlcolumn 2
 ```
 
+To analyze a saved response, use the `--responsefile` rather than a URL.
+
+``` bash
+python securityheaders.py --responsefile google.txt
+```
+
+By passing a single dash (`-`) to `--responsefile` the file will be read from `sys.stdin`
+
+``` bash
+python securityheaders.py --responsefile -
+HTTP/1.1 200 OK
+Date: Sun, 14 Oct 2018 12:59:11 GMT
+Expires: -1
+Cache-Control: private, max-age=0
+Content-Type: text/html; charset=ISO-8859-1
+
+<!doctype html><html itemscope="" itemtype="http://schema.org/WebPage" lang="en-GB"><head><meta content="text/html; charset=UTF-8" http-equiv="Content-Type"><meta content="/images/branding/googleg/1x/googleg_standard_color_128dp.png" itemprop
+[TRUNCATED]
+```
+
+To supply headers directly, use the `--headers` and specify the headers separated with a newline.
+
+``` bash
+python securityheaders.py --headers $'foo: bar\nbar: baz'
+```
+
 ### Using Docker
 
 For easy portablity, we added support for Docker for the cli tool.
