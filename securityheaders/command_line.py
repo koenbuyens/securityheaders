@@ -101,7 +101,7 @@ def main(args=sys.argv[1:],output=sys):
     group.add_argument('--listformatters', action='store_true', dest='listformatters', help='Show a list of built-in finding formatters.')
     group.add_argument('--listheaders', action='store_true', dest='listheaders', help='Show the headers that are analyzed.')
     group.add_argument('--headers', metavar='HEADERS',dest='headers', type=str, default='',help='List of headers to analyze.')
-    group.add_argument('--responsefile', dest='responsefile', type=argparse.FileType('r'), help='Analyze headers saved in this response file.')
+    group.add_argument('--response', dest='response', type=argparse.FileType('r'), help='Analyze headers saved in this response file.')
 
     parser.add_argument('--defaultscheme', metavar='https', dest='defaultscheme', default='https', type=str, choices=['http','https'],help='Default scheme if not part of url')
     parser.add_argument('--max-redirects', metavar='2', dest='redirects', default=2, type=int, help='Max redirects, set 0 to disable')
@@ -132,7 +132,7 @@ def main(args=sys.argv[1:],output=sys):
         sys.stdout.write(', '.join(api.get_all_header_names()) + "\n")
         sys.exit(0)
     else:
-        if not args.url and not (args.headers or args.responsefile):
+        if not args.url and not (args.headers or args.response):
             parser.print_help()
             sys.exit(0) 
     if not args.temp:
@@ -152,8 +152,8 @@ def main(args=sys.argv[1:],output=sys):
     else:
         callback = None
 
-    if args.responsefile:
-        results = api.check_headers_from_file(args.responsefile)
+    if args.response:
+        results = api.check_headers_from_file(args.response)
         callback(results)
     elif args.url:
         results = api.check_headers_parallel(create_urls(args), callback = callback)

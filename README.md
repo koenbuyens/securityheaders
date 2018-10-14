@@ -183,22 +183,22 @@ To load URLs from a file, use a filename rather than a URL.
 python securityheaders.py top10.txt --flatten
 ```
 
-If the file is a CSV file, tell the column with URLs with the `--urlcolumn` flag. To skip the CSV header row, use the `--startrow` flag.
+If the file is a CSV file, tell the column with URLs with the `--urlcolumn` flag (zero-indexed). To skip the CSV header row, use the `--startrow` flag.
 
 ``` bash
 python securityheaders.py majestic_10.csv --startrow 2 --urlcolumn 2
 ```
 
-To analyze a saved response, use the `--responsefile` rather than a URL.
+To analyze a saved response, use the `--response` rather than a URL.
 
 ``` bash
-python securityheaders.py --responsefile google.txt
+python securityheaders.py --response google.txt
 ```
 
-By passing a single dash (`-`) to `--responsefile` the file will be read from `sys.stdin`
+By passing a single dash (`-`) to `--response` the file will be read from `sys.stdin`
 
 ``` bash
-python securityheaders.py --responsefile -
+python securityheaders.py --response -
 HTTP/1.1 200 OK
 Date: Sun, 14 Oct 2018 12:59:11 GMT
 Expires: -1
