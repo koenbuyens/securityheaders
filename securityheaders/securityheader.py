@@ -104,7 +104,19 @@ class SecurityHeaders(object):
     def check_headers_from_string(self, headers, options=None):
         if not options:
             options= self.options.result()
-        self.check_headers_with_list(headers.splitlines())
+        return self.check_headers_with_list(headers.splitlines())
+
+    def check_headers_from_file(self, fp, options=None):
+        if not options:
+            options= self.options.result()
+        headers = []
+        with fp as f:
+            f.readline() # Skip status line
+            for line in f.readlines():
+                if line.strip() == '':
+                    break
+                headers.append(line.strip())
+        return self.check_headers_with_list(headers)
 
     def check_headers_with_list(self, resheaders, options=None):
         if not options:
