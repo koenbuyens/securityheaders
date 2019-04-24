@@ -17,5 +17,14 @@ class ReferrerPolicyDirective(Directive):
         Args:
             directive (str): the string to validate
         """
-        return isinstance(directive, ReferrerPolicyDirective)
+        if isinstance(directive, ReferrerPolicyDirective):
+            return True
+        return any(directive.lower() == item for item in cls)
 
+    @classmethod
+    def directiveseperator(cls):
+        return ','
+
+    @classmethod
+    def directivevalueseperator(cls):
+        return None
