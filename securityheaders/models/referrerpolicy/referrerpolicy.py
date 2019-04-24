@@ -10,7 +10,7 @@ class ReferrerPolicy(SecurityHeader):
     directive = ReferrerPolicyDirective
 
     def __init__(self, unparsedstring):
-       SecurityHeader.__init__(self, unparsedstring, ReferrerPolicyDirective)
+        SecurityHeader.__init__(self, unparsedstring, ReferrerPolicyDirective)
 
     def no_referrer(self):
         try:
@@ -23,7 +23,6 @@ class ReferrerPolicy(SecurityHeader):
             return ReferrerPolicyDirective.NO_REFERRER_WHEN_DOWNGRADE in self.parsedstring
         except:
             return False
-    
 
     def origin(self):
         try:
@@ -49,14 +48,12 @@ class ReferrerPolicy(SecurityHeader):
         except:
             return False
 
-
     def strict_origin_when_cross_origin(self):
         try:
             return ReferrerPolicyDirective.STRICT_ORIGIN_WHEN_CROSS_ORIGIN in self.parsedstring
         except:
             return False
 
-   
     def unsafe_url(self):
         try:
             return ReferrerPolicyDirective.UNSAFE_URL in self.parsedstring
