@@ -5,7 +5,7 @@
 The script (and burp plugin) validates whether the headers pertaining to security are present and if present, whether they have been configured securely.
 It implements checks identified by
 
-- [http://securityheaders.io/](http://securityheaders.io/)
+- [https://securityheaders.io/](https://securityheaders.io/)
 - [https://csp.withgoogle.com](https://csp.withgoogle.com)
 - OWASPs cheat sheets
 - Original research
@@ -74,7 +74,7 @@ Applications can set secure HTTP response headers as an additional layer of defe
 The script in this repository validates whether the headers pertaining to security are present and if present, whether they have been configured securely.
 In summary, the script implements the checks identified by
 
-- [http://securityheaders.io/](http://securityheaders.io/)
+- [https://securityheaders.io/](https://securityheaders.io/)
 - [https://csp.withgoogle.com](https://csp.withgoogle.com)
 - original research
 
@@ -721,7 +721,7 @@ The following pages were helpful in understanding the different security headers
 ### HTTP-Strict-Transport-Security (HSTS) References
 
 - [Intro](https://scotthelme.co.uk/hsts-the-missing-link-in-tls/)
-- [Spec](http://tools.ietf.org/html/rfc6797)
+- [Spec](https://tools.ietf.org/html/rfc6797)
 - [OWASP Cheat Sheet](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet)
 
 ### Referrer-Policy References
