@@ -230,7 +230,7 @@ class SecurityHeaders(object):
             """ Follow redirect """
             if (res.status >= 300 and res.status < 400  and follow_redirects > 0):
                 for header in headers:
-                    if (header[0] == 'location'):
+                    if (header[0].lower() == 'location'):
                         return self.check_headers((urlid, header[1]), follow_redirects - 1, options) 
                 
             """ Loop through headers and evaluate the risk """
