@@ -246,7 +246,7 @@ Install it as follows.
 1. Go to Extender, Extensions, and click on Add Extension. Select python and load the burpecheaders.py file.
     ![Load the burpsecheaders.py file](./pics/burp1.png)
 2. Once BurpSuite loads the plugin successfully, visit a website and observe that the plugin reports issues under the scanner tab.
-    ![Scanner shows issues of the plugin](./pics/burp2.png)  
+    ![Scanner shows issues of the plugin](./pics/burp2.png)
 
 Observe that the plugin highlights the offending header/directives/keywords in the response headers.
 ![BurpSuite highlights the insecure headers](./pics/burp3.png)
@@ -405,7 +405,7 @@ The HTTP Strict Transport Security (HSTS) header ensures that all communication 
 
 The header has the following directives:
 
-- **max-age**: specifies the number of seconds the browser regards the host as a known HSTS Host.  
+- **max-age**: specifies the number of seconds the browser regards the host as a known HSTS Host.
 - **includeSubdomains**: this optional directive indicates that the HSTS Policy applies to this HSTS Host as well as any subdomains of
    the host's domain name.
 - **preload**: the `preload` directive indicates that the domain can be preloaded in the browser as a known HSTS host.
@@ -681,7 +681,7 @@ The tool also identifies the following syntactical errors (`SyntaxChecker`) for 
     ```
 - **Missing Directive** (`MissingDirectiveChecker`): using a header without a required directive is an issue. The tool will thus mark the following as an error as max-age is missing.
     ```http
-    Expect-CT: enforce
+    Strict-Transport-Security: includeSubDomains
     ```
 - **Empty Directives** (`EmptyDirectiveChecker`): using a directive without a required value is an issue. The tool will thus mark the following as an error.
     ```http

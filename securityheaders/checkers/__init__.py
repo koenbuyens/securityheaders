@@ -34,7 +34,6 @@ from .xframeoptions import *
 from .xpoweredby import *
 from .xxssprotection import *
 from .other import *
-from .expectct import *
 from .xpcdp import *
 from .setcookie import *
 

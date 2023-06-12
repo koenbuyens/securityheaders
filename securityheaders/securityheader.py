@@ -9,7 +9,7 @@ import socket
 import ssl
 import random
 from functools import partial
-from anytree import ContStyle, RenderTree     
+from anytree import ContStyle, RenderTree
 
 try:
     from multiprocessing import Pool, freeze_support
@@ -44,14 +44,14 @@ def _unpickle_method(func_name, obj, cls):
             break
     return func.__get__(obj, cls)
 
-try: 
+try:
     import copy_reg
 except ModuleNotFoundError:
     import copyreg as copy_reg
 
 import types
 copy_reg.pickle(types.MethodType, _pickle_method, _unpickle_method)
-                                  
+
 
 class SecurityHeaders(object):
     def __init__(self):
@@ -75,7 +75,7 @@ class SecurityHeaders(object):
 
     def get_all_checker_names(self):
         return CheckerFactory().getnames()
-    
+
     def get_all_header_names(self):
         return sorted(ModelFactory().getheadernames())
 
@@ -137,7 +137,7 @@ class SecurityHeaders(object):
             options['checks'] = []
         if not 'unwanted' in options.keys():
             options['unwanted'] = []
-        checks = CheckerFactory().getactualcheckers(options['checks'])     
+        checks = CheckerFactory().getactualcheckers(options['checks'])
         unwanted = CheckerFactory().getactualcheckers(options['unwanted'])
         options['checks'] = [e for e in checks if e not in unwanted]
         options['unwanted'] = None
@@ -149,7 +149,7 @@ class SecurityHeaders(object):
                     for check in options[checker].keys():
                         if leaf not in options.keys():
                             options[leaf]=dict()
-                        options[leaf][check] = options[checker][check]      
+                        options[leaf][check] = options[checker][check]
         return HeaderEvaluator().evaluate(headermap,options)
 
     def check_headers_parallel(self, urls, options=None, callback=None):
@@ -164,7 +164,7 @@ class SecurityHeaders(object):
                 result = pool.apply_async(self.check_headers, args=(url, options.get('redirects'), options), callback=callback)
                 results.append(result)
             pool.close()
-            pool.join() 
+            pool.join()
             return results
         else:
             raise Exception('no parallelism supported')
@@ -175,7 +175,7 @@ class SecurityHeaders(object):
 
         Args:
             url (str): Target URL in format: scheme://hostname/path/to/file
-            follow_redirects (Optional[str]): How deep we follow the redirects, 
+            follow_redirects (Optional[str]): How deep we follow the redirects,
             value 0 disables redirects.
         """
         if not options:
@@ -193,7 +193,7 @@ class SecurityHeaders(object):
            else:
                url = 'https://' + url.strip()
 
-        parsed = urlparse(url) 
+        parsed = urlparse(url)
         hostname = parsed.netloc
         if not hostname:
             return []
@@ -222,7 +222,7 @@ class SecurityHeaders(object):
             else:
                 """ Unknown protocol scheme """
                 return {}
-     
+
             conn.request('GET', path, None, headers)
             res = conn.getresponse()
             headers = res.getheaders()
@@ -231,14 +231,14 @@ class SecurityHeaders(object):
             if (res.status >= 300 and res.status < 400  and follow_redirects > 0):
                 for header in headers:
                     if (header[0] == 'location'):
-                        return self.check_headers((urlid, header[1]), follow_redirects - 1, options) 
-                
+                        return self.check_headers((urlid, header[1]), follow_redirects - 1, options)
+
             """ Loop through headers and evaluate the risk """
             result = self.check_headers_with_map(headers, options)
             for finding in result:
                 finding.url = url
                 finding.urlid = urlid
-            
+
             return result
         except Exception as e:
             return [Finding(None, FindingType.ERROR, str(e), FindingSeverity.ERROR, None, None,url , urlid)]
