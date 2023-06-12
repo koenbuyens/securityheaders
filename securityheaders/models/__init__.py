@@ -27,14 +27,15 @@ from .xpoweredby import *
 from .xwebkitcsp import *
 from .xcsp import *
 from .xdownloadoptions import *
-from .expectct import *
 from .xaspnetversion import *
 from .xaspnetmvcversion import *
 from .hpkp import *
 from .xpcdp import *
 from .setcookie import *
 
-__all__ = ['annotations','csp','cors','clearsitedata','hsts','xcontenttypeoptions','xframeoptions','xxssprotection','featurepolicy','referrerpolicy','server','xpoweredby', 'expectct','xcsp','xwebkitcsp','xpcdp','xaspnetversion','xaspnetmvcversion','hpkp','xdownloadoptions']
+__all__ = ['annotations', 'csp', 'cors', 'clearsitedata', 'hsts', 'xcontenttypeoptions', 'xframeoptions',
+           'xxssprotection', 'featurepolicy', 'referrerpolicy', 'server', 'xpoweredby', 'xcsp', 'xwebkitcsp', 'xpcdp',
+           'xaspnetversion', 'xaspnetmvcversion', 'hpkp', 'xdownloadoptions']
 clazzes = list(Util.inheritors(Header))
 clazzes.extend(Util.inheritors(Directive))
 clazzes.extend(Util.inheritors(Keyword))
