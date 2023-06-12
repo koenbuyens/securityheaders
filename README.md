@@ -246,7 +246,7 @@ Install it as follows.
 1. Go to Extender, Extensions, and click on Add Extension. Select python and load the burpecheaders.py file.
     ![Load the burpsecheaders.py file](./pics/burp1.png)
 2. Once BurpSuite loads the plugin successfully, visit a website and observe that the plugin reports issues under the scanner tab.
-    ![Scanner shows issues of the plugin](./pics/burp2.png)  
+    ![Scanner shows issues of the plugin](./pics/burp2.png)
 
 Observe that the plugin highlights the offending header/directives/keywords in the response headers.
 ![BurpSuite highlights the insecure headers](./pics/burp3.png)
@@ -405,7 +405,7 @@ The HTTP Strict Transport Security (HSTS) header ensures that all communication 
 
 The header has the following directives:
 
-- **max-age**: specifies the number of seconds the browser regards the host as a known HSTS Host.  
+- **max-age**: specifies the number of seconds the browser regards the host as a known HSTS Host.
 - **includeSubdomains**: this optional directive indicates that the HSTS Policy applies to this HSTS Host as well as any subdomains of
    the host's domain name.
 - **preload**: the `preload` directive indicates that the domain can be preloaded in the browser as a known HSTS host.
@@ -707,12 +707,19 @@ The following pages were helpful in understanding the different security headers
 - [Introduction](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)
 - [Spec](https://fetch.spec.whatwg.org/)
 
-### Feature-Policy References
+### Feature-Policy / Permissions-Policy References
+
+The Feature Policy was renamed to the Permissions Policy on May 26, 2020.
 
 - [Introduction by Google](https://developers.google.com/web/updates/2018/06/feature-policy)
+- [Migration steps from Feature Policy to Permissions Policy](https://developer.chrome.com/docs/privacy-sandbox/permissions-policy/#migration-from-feature-policy)
 - [Explainer](https://docs.google.com/document/d/1k0Ua-ZWlM_PsFCFdLMa8kaVTo32PeNZ4G7FFHqpFx4E/edit)
-- [Spec](https://wicg.github.io/feature-policy/)
+- [Spec](https://w3c.github.io/webappsec-permissions-policy/)
 - [Spec 2](https://github.com/WICG/feature-policy/blob/master/features.md)
+
+TODO: Add a check to see if feature policy is used, in this case should be an issue since it's renamed to permissions policy
+TODO: Add a check to see if permission policy is correctly implemented
+
 
 ### HPKP References
 
